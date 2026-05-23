@@ -1,0 +1,9 @@
+model AuditLog {
+  id        String     @id @default(dbgenerated("gen_random_uuid()"))
+  userId    String
+  action    AuthAction
+  ipAddress String
+  userAgent String
+  metaData  Json
+  createdAt DateTime   @default(now())
+}
