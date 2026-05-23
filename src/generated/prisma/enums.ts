@@ -19,3 +19,13 @@ export const AuthAction = {
 } as const
 
 export type AuthAction = (typeof AuthAction)[keyof typeof AuthAction]
+
+
+export const OtpType = {
+  PASSWORD_RESET: 'PASSWORD_RESET',
+  EMAIL_VERIFICATION: 'EMAIL_VERIFICATION',
+  PHONE_VERIFICATION: 'PHONE_VERIFICATION',
+  TWO_FACTOR: 'TWO_FACTOR'
+} as const
+
+export type OtpType = (typeof OtpType)[keyof typeof OtpType]

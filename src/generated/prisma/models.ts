@@ -9,5 +9,10 @@
  * 🟢 You can import this file directly.
  */
 export type * from './models/AuditLog.js'
+export type * from './models/Session.js'
+export type * from './models/UserCredential.js'
+export type * from './models/PasswordHistory.js'
+export type * from './models/Otp.js'
 export type * from './models/Resource.js'
+export type * from './models/User.js'
 export type * from './commonInputTypes.js'

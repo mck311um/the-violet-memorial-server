@@ -1,0 +1,16 @@
+model User {
+    id              String      @id @default(dbgenerated("gen_random_uuid()"))
+    firstName        String
+    lastName        String
+    email           String      @unique
+
+    createdAt       DateTime    @default(now())
+    updatedAt       DateTime?   @updatedAt
+
+    credential      UserCredential?
+    passwordHistory PasswordHistory[]
+    otps            Otp[]
+    sessions        Session[]
+}
+
+

@@ -23,7 +23,32 @@ export * from './enums.js';
  */
 export type AuditLog = Prisma.AuditLogModel
 /**
+ * Model Session
+ * 
+ */
+export type Session = Prisma.SessionModel
+/**
+ * Model UserCredential
+ * 
+ */
+export type UserCredential = Prisma.UserCredentialModel
+/**
+ * Model PasswordHistory
+ * 
+ */
+export type PasswordHistory = Prisma.PasswordHistoryModel
+/**
+ * Model Otp
+ * 
+ */
+export type Otp = Prisma.OtpModel
+/**
  * Model Resource
  * 
  */
 export type Resource = Prisma.ResourceModel
+/**
+ * Model User
+ * 
+ */
+export type User = Prisma.UserModel

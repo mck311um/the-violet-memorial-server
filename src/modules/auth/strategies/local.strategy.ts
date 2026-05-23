@@ -1,10 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { Strategy } from 'passport-local';
+import { AuthService } from '../auth.service';
 
 @Injectable()
 export class LocalStrategy extends PassportStrategy(Strategy) {
-  constructor() {
+  constructor(private readonly authService: AuthService) {
     super({
       usernameField: 'email',
       passwordField: 'password',
@@ -20,5 +21,12 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
     if (!role) {
       throw new Error('Role is required');
     }
+
+    return this.authService.validateUser({
+      username: email,
+      password,
+      ip,
+      userAgent,
+    });
   }
 }
