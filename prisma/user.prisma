@@ -1,0 +1,29 @@
+model User {
+    id              String      @id @default(dbgenerated("gen_random_uuid()"))
+    firstName        String
+    lastName        String
+    email           String      @unique
+    organizationId  String
+    role            UserRole    @default(USER)
+    profilePicture   String?
+
+    createdAt       DateTime    @default(now())
+    updatedAt       DateTime?   @updatedAt
+
+    credential      UserCredential?
+    passwordHistory PasswordHistory[]
+    otps            Otp[]
+    sessions        Session[]
+    memorials       Memorial[]
+
+    organization    Organization @relation(fields: [organizationId], references: [id])
+}
+
+model Organization {
+    id          String      @id @default(dbgenerated("gen_random_uuid()"))
+    name        String
+    slug        String      @unique
+    createdAt   DateTime    @default(now())
+    updatedAt   DateTime?   @updatedAt
+    users       User[]
+}

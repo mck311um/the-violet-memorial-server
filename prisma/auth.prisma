@@ -1,0 +1,49 @@
+model AuditLog {
+  id        String     @id @default(dbgenerated("gen_random_uuid()"))
+  userId    String
+  action    AuthAction
+  ipAddress String
+  userAgent String
+  metaData  Json
+  createdAt DateTime   @default(now())
+}
+
+model Session {
+  id        String   @id @default(dbgenerated("gen_random_uuid()"))
+  userId    String
+  tokenHash String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+model UserCredential {
+    id          String      @id @default(dbgenerated("gen_random_uuid()"))
+    email       String      @unique
+    password    String
+    userId      String      @unique
+
+    user        User        @relation(fields: [userId], references: [id])
+}
+
+model PasswordHistory {
+  id            String   @id @default(dbgenerated("gen_random_uuid()"))
+  userId        String
+  password      String
+  createdAt     DateTime @default(now())
+
+  user          User     @relation(fields: [userId], references: [id])
+}
+
+model Otp {
+  id        String   @id @default(dbgenerated("gen_random_uuid()"))
+  userId    String
+  codeHash  String
+  type      OtpType
+  expiresAt DateTime
+  used      Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+    user      User     @relation(fields: [userId], references: [id])
+}

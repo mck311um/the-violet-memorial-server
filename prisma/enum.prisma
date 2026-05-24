@@ -1,0 +1,31 @@
+enum AuthAction {
+  LOGIN_SUCCESS
+  LOGIN_FAILED
+  LOGOUT
+  PASSWORD_CHANGED
+  PASSWORD_RESET
+  ACCOUNT_LOCKED
+}
+
+enum OtpType {
+  PASSWORD_RESET
+  EMAIL_VERIFICATION
+  PHONE_VERIFICATION
+  TWO_FACTOR
+}
+
+enum MemorialCategory {
+  WOMEN
+  CHILDREN
+}
+
+enum UserRole {
+  ADMIN
+  USER
+}
+
+enum MemoryStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}

@@ -1,0 +1,76 @@
+model Memorial {
+    id              String    @id @default(dbgenerated("gen_random_uuid()"))
+    slug            String    @unique
+    name            String
+    category        String
+    countryId       String
+    occupation      String
+    remembrance     String
+    potraitUrl      String
+    dateOfBirth     DateTime
+    dateOfDeath     DateTime
+    about           String
+    
+    createdAt       DateTime @default(now())
+    updatedAt       DateTime @updatedAt
+    createdBy       String
+
+    images          Image[]
+    timeline        TimelineEntry[]
+    memories        Memory[]
+
+    country         Country @relation(fields: [countryId], references: [id])
+    createdByUser   User @relation(fields: [createdBy], references: [id])
+    flames           Flames[]
+}
+
+model Flames {
+    id          String   @id @default(dbgenerated("gen_random_uuid()"))
+    ipAddress   String   @unique
+    memorialId  String?  
+
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+
+    memorial     Memorial? @relation(fields: [memorialId], references: [id])
+}
+
+model Image {
+    id          String    @id @default(dbgenerated("gen_random_uuid()"))
+    url         String    @unique
+    description String
+    memorialId  String
+
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+    memorial    Memorial @relation(fields: [memorialId], references: [id])
+}
+
+model TimelineEntry {
+    id          String    @id @default(dbgenerated("gen_random_uuid()"))
+    title       String
+    description String
+    year        Int
+    memorialId  String
+
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+    
+    memorial    Memorial @relation(fields: [memorialId], references: [id])
+}
+
+model Memory {
+    id          String    @id @default(dbgenerated("gen_random_uuid()"))
+    initials    String
+    name        String
+    message     String
+    memorialId  String
+    status      MemoryStatus @default(PENDING)
+
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+    
+
+
+    memorial    Memorial @relation(fields: [memorialId], references: [id])
+}
