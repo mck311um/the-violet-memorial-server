@@ -23,3 +23,9 @@ enum UserRole {
   ADMIN
   USER
 }
+
+enum MemoryStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}

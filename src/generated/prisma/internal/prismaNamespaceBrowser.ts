@@ -58,8 +58,10 @@ export const ModelName = {
   PasswordHistory: 'PasswordHistory',
   Otp: 'Otp',
   Memorial: 'Memorial',
+  Flames: 'Flames',
   Image: 'Image',
   TimelineEntry: 'TimelineEntry',
+  Memory: 'Memory',
   Resource: 'Resource',
   User: 'User',
   Organization: 'Organization'
@@ -169,6 +171,17 @@ export const MemorialScalarFieldEnum = {
 export type MemorialScalarFieldEnum = (typeof MemorialScalarFieldEnum)[keyof typeof MemorialScalarFieldEnum]
 
 
+export const FlamesScalarFieldEnum = {
+  id: 'id',
+  ipAddress: 'ipAddress',
+  memorialId: 'memorialId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type FlamesScalarFieldEnum = (typeof FlamesScalarFieldEnum)[keyof typeof FlamesScalarFieldEnum]
+
+
 export const ImageScalarFieldEnum = {
   id: 'id',
   url: 'url',
@@ -192,6 +205,20 @@ export const TimelineEntryScalarFieldEnum = {
 } as const
 
 export type TimelineEntryScalarFieldEnum = (typeof TimelineEntryScalarFieldEnum)[keyof typeof TimelineEntryScalarFieldEnum]
+
+
+export const MemoryScalarFieldEnum = {
+  id: 'id',
+  initials: 'initials',
+  name: 'name',
+  message: 'message',
+  memorialId: 'memorialId',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type MemoryScalarFieldEnum = (typeof MemoryScalarFieldEnum)[keyof typeof MemoryScalarFieldEnum]
 
 
 export const ResourceScalarFieldEnum = {

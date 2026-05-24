@@ -391,8 +391,10 @@ export const ModelName = {
   PasswordHistory: 'PasswordHistory',
   Otp: 'Otp',
   Memorial: 'Memorial',
+  Flames: 'Flames',
   Image: 'Image',
   TimelineEntry: 'TimelineEntry',
+  Memory: 'Memory',
   Resource: 'Resource',
   User: 'User',
   Organization: 'Organization'
@@ -411,7 +413,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "country" | "auditLog" | "session" | "userCredential" | "passwordHistory" | "otp" | "memorial" | "image" | "timelineEntry" | "resource" | "user" | "organization"
+    modelProps: "country" | "auditLog" | "session" | "userCredential" | "passwordHistory" | "otp" | "memorial" | "flames" | "image" | "timelineEntry" | "memory" | "resource" | "user" | "organization"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -933,6 +935,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Flames: {
+      payload: Prisma.$FlamesPayload<ExtArgs>
+      fields: Prisma.FlamesFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.FlamesFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FlamesPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.FlamesFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FlamesPayload>
+        }
+        findFirst: {
+          args: Prisma.FlamesFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FlamesPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.FlamesFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FlamesPayload>
+        }
+        findMany: {
+          args: Prisma.FlamesFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FlamesPayload>[]
+        }
+        create: {
+          args: Prisma.FlamesCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FlamesPayload>
+        }
+        createMany: {
+          args: Prisma.FlamesCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.FlamesCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FlamesPayload>[]
+        }
+        delete: {
+          args: Prisma.FlamesDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FlamesPayload>
+        }
+        update: {
+          args: Prisma.FlamesUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FlamesPayload>
+        }
+        deleteMany: {
+          args: Prisma.FlamesDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.FlamesUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.FlamesUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FlamesPayload>[]
+        }
+        upsert: {
+          args: Prisma.FlamesUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FlamesPayload>
+        }
+        aggregate: {
+          args: Prisma.FlamesAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateFlames>
+        }
+        groupBy: {
+          args: Prisma.FlamesGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.FlamesGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.FlamesCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.FlamesCountAggregateOutputType> | number
+        }
+      }
+    }
     Image: {
       payload: Prisma.$ImagePayload<ExtArgs>
       fields: Prisma.ImageFieldRefs
@@ -1078,6 +1154,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.TimelineEntryCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.TimelineEntryCountAggregateOutputType> | number
+        }
+      }
+    }
+    Memory: {
+      payload: Prisma.$MemoryPayload<ExtArgs>
+      fields: Prisma.MemoryFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.MemoryFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MemoryPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.MemoryFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MemoryPayload>
+        }
+        findFirst: {
+          args: Prisma.MemoryFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MemoryPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.MemoryFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MemoryPayload>
+        }
+        findMany: {
+          args: Prisma.MemoryFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MemoryPayload>[]
+        }
+        create: {
+          args: Prisma.MemoryCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MemoryPayload>
+        }
+        createMany: {
+          args: Prisma.MemoryCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.MemoryCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MemoryPayload>[]
+        }
+        delete: {
+          args: Prisma.MemoryDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MemoryPayload>
+        }
+        update: {
+          args: Prisma.MemoryUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MemoryPayload>
+        }
+        deleteMany: {
+          args: Prisma.MemoryDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.MemoryUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.MemoryUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MemoryPayload>[]
+        }
+        upsert: {
+          args: Prisma.MemoryUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MemoryPayload>
+        }
+        aggregate: {
+          args: Prisma.MemoryAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateMemory>
+        }
+        groupBy: {
+          args: Prisma.MemoryGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MemoryGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.MemoryCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MemoryCountAggregateOutputType> | number
         }
       }
     }
@@ -1430,6 +1580,17 @@ export const MemorialScalarFieldEnum = {
 export type MemorialScalarFieldEnum = (typeof MemorialScalarFieldEnum)[keyof typeof MemorialScalarFieldEnum]
 
 
+export const FlamesScalarFieldEnum = {
+  id: 'id',
+  ipAddress: 'ipAddress',
+  memorialId: 'memorialId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type FlamesScalarFieldEnum = (typeof FlamesScalarFieldEnum)[keyof typeof FlamesScalarFieldEnum]
+
+
 export const ImageScalarFieldEnum = {
   id: 'id',
   url: 'url',
@@ -1453,6 +1614,20 @@ export const TimelineEntryScalarFieldEnum = {
 } as const
 
 export type TimelineEntryScalarFieldEnum = (typeof TimelineEntryScalarFieldEnum)[keyof typeof TimelineEntryScalarFieldEnum]
+
+
+export const MemoryScalarFieldEnum = {
+  id: 'id',
+  initials: 'initials',
+  name: 'name',
+  message: 'message',
+  memorialId: 'memorialId',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type MemoryScalarFieldEnum = (typeof MemoryScalarFieldEnum)[keyof typeof MemoryScalarFieldEnum]
 
 
 export const ResourceScalarFieldEnum = {
@@ -1632,6 +1807,20 @@ export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel,
 
 
 /**
+ * Reference to a field of type 'MemoryStatus'
+ */
+export type EnumMemoryStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'MemoryStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'MemoryStatus[]'
+ */
+export type ListEnumMemoryStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'MemoryStatus[]'>
+    
+
+
+/**
  * Reference to a field of type 'UserRole'
  */
 export type EnumUserRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'UserRole'>
@@ -1775,8 +1964,10 @@ export type GlobalOmitConfig = {
   passwordHistory?: Prisma.PasswordHistoryOmit
   otp?: Prisma.OtpOmit
   memorial?: Prisma.MemorialOmit
+  flames?: Prisma.FlamesOmit
   image?: Prisma.ImageOmit
   timelineEntry?: Prisma.TimelineEntryOmit
+  memory?: Prisma.MemoryOmit
   resource?: Prisma.ResourceOmit
   user?: Prisma.UserOmit
   organization?: Prisma.OrganizationOmit

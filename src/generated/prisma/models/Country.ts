@@ -182,6 +182,7 @@ export type CountryWhereInput = {
   code?: Prisma.StringFilter<"Country"> | string
   createdAt?: Prisma.DateTimeFilter<"Country"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Country"> | Date | string
+  memorials?: Prisma.MemorialListRelationFilter
 }
 
 export type CountryOrderByWithRelationInput = {
@@ -190,6 +191,7 @@ export type CountryOrderByWithRelationInput = {
   code?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  memorials?: Prisma.MemorialOrderByRelationAggregateInput
 }
 
 export type CountryWhereUniqueInput = Prisma.AtLeast<{
@@ -201,6 +203,7 @@ export type CountryWhereUniqueInput = Prisma.AtLeast<{
   name?: Prisma.StringFilter<"Country"> | string
   createdAt?: Prisma.DateTimeFilter<"Country"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Country"> | Date | string
+  memorials?: Prisma.MemorialListRelationFilter
 }, "id" | "code">
 
 export type CountryOrderByWithAggregationInput = {
@@ -231,6 +234,7 @@ export type CountryCreateInput = {
   code: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  memorials?: Prisma.MemorialCreateNestedManyWithoutCountryInput
 }
 
 export type CountryUncheckedCreateInput = {
@@ -239,6 +243,7 @@ export type CountryUncheckedCreateInput = {
   code: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  memorials?: Prisma.MemorialUncheckedCreateNestedManyWithoutCountryInput
 }
 
 export type CountryUpdateInput = {
@@ -247,6 +252,7 @@ export type CountryUpdateInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  memorials?: Prisma.MemorialUpdateManyWithoutCountryNestedInput
 }
 
 export type CountryUncheckedUpdateInput = {
@@ -255,6 +261,7 @@ export type CountryUncheckedUpdateInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  memorials?: Prisma.MemorialUncheckedUpdateManyWithoutCountryNestedInput
 }
 
 export type CountryCreateManyInput = {
@@ -305,6 +312,11 @@ export type CountryMinOrderByAggregateInput = {
   updatedAt?: Prisma.SortOrder
 }
 
+export type CountryScalarRelationFilter = {
+  is?: Prisma.CountryWhereInput
+  isNot?: Prisma.CountryWhereInput
+}
+
 export type StringFieldUpdateOperationsInput = {
   set?: string
 }
@@ -313,6 +325,97 @@ export type DateTimeFieldUpdateOperationsInput = {
   set?: Date | string
 }
 
+export type CountryCreateNestedOneWithoutMemorialsInput = {
+  create?: Prisma.XOR<Prisma.CountryCreateWithoutMemorialsInput, Prisma.CountryUncheckedCreateWithoutMemorialsInput>
+  connectOrCreate?: Prisma.CountryCreateOrConnectWithoutMemorialsInput
+  connect?: Prisma.CountryWhereUniqueInput
+}
+
+export type CountryUpdateOneRequiredWithoutMemorialsNestedInput = {
+  create?: Prisma.XOR<Prisma.CountryCreateWithoutMemorialsInput, Prisma.CountryUncheckedCreateWithoutMemorialsInput>
+  connectOrCreate?: Prisma.CountryCreateOrConnectWithoutMemorialsInput
+  upsert?: Prisma.CountryUpsertWithoutMemorialsInput
+  connect?: Prisma.CountryWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.CountryUpdateToOneWithWhereWithoutMemorialsInput, Prisma.CountryUpdateWithoutMemorialsInput>, Prisma.CountryUncheckedUpdateWithoutMemorialsInput>
+}
+
+export type CountryCreateWithoutMemorialsInput = {
+  id?: string
+  name: string
+  code: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type CountryUncheckedCreateWithoutMemorialsInput = {
+  id?: string
+  name: string
+  code: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type CountryCreateOrConnectWithoutMemorialsInput = {
+  where: Prisma.CountryWhereUniqueInput
+  create: Prisma.XOR<Prisma.CountryCreateWithoutMemorialsInput, Prisma.CountryUncheckedCreateWithoutMemorialsInput>
+}
+
+export type CountryUpsertWithoutMemorialsInput = {
+  update: Prisma.XOR<Prisma.CountryUpdateWithoutMemorialsInput, Prisma.CountryUncheckedUpdateWithoutMemorialsInput>
+  create: Prisma.XOR<Prisma.CountryCreateWithoutMemorialsInput, Prisma.CountryUncheckedCreateWithoutMemorialsInput>
+  where?: Prisma.CountryWhereInput
+}
+
+export type CountryUpdateToOneWithWhereWithoutMemorialsInput = {
+  where?: Prisma.CountryWhereInput
+  data: Prisma.XOR<Prisma.CountryUpdateWithoutMemorialsInput, Prisma.CountryUncheckedUpdateWithoutMemorialsInput>
+}
+
+export type CountryUpdateWithoutMemorialsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type CountryUncheckedUpdateWithoutMemorialsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+
+/**
+ * Count Type CountryCountOutputType
+ */
+
+export type CountryCountOutputType = {
+  memorials: number
+}
+
+export type CountryCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  memorials?: boolean | CountryCountOutputTypeCountMemorialsArgs
+}
+
+/**
+ * CountryCountOutputType without action
+ */
+export type CountryCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the CountryCountOutputType
+   */
+  select?: Prisma.CountryCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * CountryCountOutputType without action
+ */
+export type CountryCountOutputTypeCountMemorialsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.MemorialWhereInput
+}
 
 
 export type CountrySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -321,6 +424,8 @@ export type CountrySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   code?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  memorials?: boolean | Prisma.Country$memorialsArgs<ExtArgs>
+  _count?: boolean | Prisma.CountryCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["country"]>
 
 export type CountrySelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -348,10 +453,18 @@ export type CountrySelectScalar = {
 }
 
 export type CountryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "code" | "createdAt" | "updatedAt", ExtArgs["result"]["country"]>
+export type CountryInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  memorials?: boolean | Prisma.Country$memorialsArgs<ExtArgs>
+  _count?: boolean | Prisma.CountryCountOutputTypeDefaultArgs<ExtArgs>
+}
+export type CountryIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
+export type CountryIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
 
 export type $CountryPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Country"
-  objects: {}
+  objects: {
+    memorials: Prisma.$MemorialPayload<ExtArgs>[]
+  }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     name: string
@@ -752,6 +865,7 @@ readonly fields: CountryFieldRefs;
  */
 export interface Prisma__CountryClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  memorials<T extends Prisma.Country$memorialsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Country$memorialsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MemorialPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -803,6 +917,10 @@ export type CountryFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.Inter
    */
   omit?: Prisma.CountryOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CountryInclude<ExtArgs> | null
+  /**
    * Filter, which Country to fetch.
    */
   where: Prisma.CountryWhereUniqueInput
@@ -821,6 +939,10 @@ export type CountryFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extension
    */
   omit?: Prisma.CountryOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CountryInclude<ExtArgs> | null
+  /**
    * Filter, which Country to fetch.
    */
   where: Prisma.CountryWhereUniqueInput
@@ -838,6 +960,10 @@ export type CountryFindFirstArgs<ExtArgs extends runtime.Types.Extensions.Intern
    * Omit specific fields from the Country
    */
   omit?: Prisma.CountryOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CountryInclude<ExtArgs> | null
   /**
    * Filter, which Country to fetch.
    */
@@ -887,6 +1013,10 @@ export type CountryFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions
    */
   omit?: Prisma.CountryOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CountryInclude<ExtArgs> | null
+  /**
    * Filter, which Country to fetch.
    */
   where?: Prisma.CountryWhereInput
@@ -934,6 +1064,10 @@ export type CountryFindManyArgs<ExtArgs extends runtime.Types.Extensions.Interna
    * Omit specific fields from the Country
    */
   omit?: Prisma.CountryOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CountryInclude<ExtArgs> | null
   /**
    * Filter, which Countries to fetch.
    */
@@ -983,6 +1117,10 @@ export type CountryCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalA
    */
   omit?: Prisma.CountryOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CountryInclude<ExtArgs> | null
+  /**
    * The data needed to create a Country.
    */
   data: Prisma.XOR<Prisma.CountryCreateInput, Prisma.CountryUncheckedCreateInput>
@@ -1030,6 +1168,10 @@ export type CountryUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalA
    * Omit specific fields from the Country
    */
   omit?: Prisma.CountryOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CountryInclude<ExtArgs> | null
   /**
    * The data needed to update a Country.
    */
@@ -1097,6 +1239,10 @@ export type CountryUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalA
    */
   omit?: Prisma.CountryOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CountryInclude<ExtArgs> | null
+  /**
    * The filter to search for the Country to update in case it exists.
    */
   where: Prisma.CountryWhereUniqueInput
@@ -1123,6 +1269,10 @@ export type CountryDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalA
    */
   omit?: Prisma.CountryOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CountryInclude<ExtArgs> | null
+  /**
    * Filter which Country to delete.
    */
   where: Prisma.CountryWhereUniqueInput
@@ -1143,6 +1293,30 @@ export type CountryDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Inter
 }
 
 /**
+ * Country.memorials
+ */
+export type Country$memorialsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Memorial
+   */
+  select?: Prisma.MemorialSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Memorial
+   */
+  omit?: Prisma.MemorialOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MemorialInclude<ExtArgs> | null
+  where?: Prisma.MemorialWhereInput
+  orderBy?: Prisma.MemorialOrderByWithRelationInput | Prisma.MemorialOrderByWithRelationInput[]
+  cursor?: Prisma.MemorialWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.MemorialScalarFieldEnum | Prisma.MemorialScalarFieldEnum[]
+}
+
+/**
  * Country without action
  */
 export type CountryDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1154,4 +1328,8 @@ export type CountryDefaultArgs<ExtArgs extends runtime.Types.Extensions.Internal
    * Omit specific fields from the Country
    */
   omit?: Prisma.CountryOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CountryInclude<ExtArgs> | null
 }

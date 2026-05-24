@@ -75,6 +75,11 @@ export type Otp = Prisma.OtpModel
  */
 export type Memorial = Prisma.MemorialModel
 /**
+ * Model Flames
+ * 
+ */
+export type Flames = Prisma.FlamesModel
+/**
  * Model Image
  * 
  */
@@ -84,6 +89,11 @@ export type Image = Prisma.ImageModel
  * 
  */
 export type TimelineEntry = Prisma.TimelineEntryModel
+/**
+ * Model Memory
+ * 
+ */
+export type Memory = Prisma.MemoryModel
 /**
  * Model Resource
  * 

@@ -190,7 +190,7 @@ export type ImageWhereInput = {
   memorialId?: Prisma.StringFilter<"Image"> | string
   createdAt?: Prisma.DateTimeFilter<"Image"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Image"> | Date | string
-  memorials?: Prisma.MemorialListRelationFilter
+  memorial?: Prisma.XOR<Prisma.MemorialScalarRelationFilter, Prisma.MemorialWhereInput>
 }
 
 export type ImageOrderByWithRelationInput = {
@@ -200,7 +200,7 @@ export type ImageOrderByWithRelationInput = {
   memorialId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  memorials?: Prisma.MemorialOrderByRelationAggregateInput
+  memorial?: Prisma.MemorialOrderByWithRelationInput
 }
 
 export type ImageWhereUniqueInput = Prisma.AtLeast<{
@@ -213,7 +213,7 @@ export type ImageWhereUniqueInput = Prisma.AtLeast<{
   memorialId?: Prisma.StringFilter<"Image"> | string
   createdAt?: Prisma.DateTimeFilter<"Image"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Image"> | Date | string
-  memorials?: Prisma.MemorialListRelationFilter
+  memorial?: Prisma.XOR<Prisma.MemorialScalarRelationFilter, Prisma.MemorialWhereInput>
 }, "id" | "url">
 
 export type ImageOrderByWithAggregationInput = {
@@ -244,10 +244,9 @@ export type ImageCreateInput = {
   id?: string
   url: string
   description: string
-  memorialId: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  memorials?: Prisma.MemorialCreateNestedManyWithoutImagesInput
+  memorial: Prisma.MemorialCreateNestedOneWithoutImagesInput
 }
 
 export type ImageUncheckedCreateInput = {
@@ -257,17 +256,15 @@ export type ImageUncheckedCreateInput = {
   memorialId: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  memorials?: Prisma.MemorialUncheckedCreateNestedManyWithoutImagesInput
 }
 
 export type ImageUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   url?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  memorialId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  memorials?: Prisma.MemorialUpdateManyWithoutImagesNestedInput
+  memorial?: Prisma.MemorialUpdateOneRequiredWithoutImagesNestedInput
 }
 
 export type ImageUncheckedUpdateInput = {
@@ -277,7 +274,6 @@ export type ImageUncheckedUpdateInput = {
   memorialId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  memorials?: Prisma.MemorialUncheckedUpdateManyWithoutImagesNestedInput
 }
 
 export type ImageCreateManyInput = {
@@ -293,7 +289,6 @@ export type ImageUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   url?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  memorialId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -344,81 +339,88 @@ export type ImageMinOrderByAggregateInput = {
   updatedAt?: Prisma.SortOrder
 }
 
-export type ImageCreateNestedManyWithoutMemorialsInput = {
-  create?: Prisma.XOR<Prisma.ImageCreateWithoutMemorialsInput, Prisma.ImageUncheckedCreateWithoutMemorialsInput> | Prisma.ImageCreateWithoutMemorialsInput[] | Prisma.ImageUncheckedCreateWithoutMemorialsInput[]
-  connectOrCreate?: Prisma.ImageCreateOrConnectWithoutMemorialsInput | Prisma.ImageCreateOrConnectWithoutMemorialsInput[]
+export type ImageCreateNestedManyWithoutMemorialInput = {
+  create?: Prisma.XOR<Prisma.ImageCreateWithoutMemorialInput, Prisma.ImageUncheckedCreateWithoutMemorialInput> | Prisma.ImageCreateWithoutMemorialInput[] | Prisma.ImageUncheckedCreateWithoutMemorialInput[]
+  connectOrCreate?: Prisma.ImageCreateOrConnectWithoutMemorialInput | Prisma.ImageCreateOrConnectWithoutMemorialInput[]
+  createMany?: Prisma.ImageCreateManyMemorialInputEnvelope
   connect?: Prisma.ImageWhereUniqueInput | Prisma.ImageWhereUniqueInput[]
 }
 
-export type ImageUncheckedCreateNestedManyWithoutMemorialsInput = {
-  create?: Prisma.XOR<Prisma.ImageCreateWithoutMemorialsInput, Prisma.ImageUncheckedCreateWithoutMemorialsInput> | Prisma.ImageCreateWithoutMemorialsInput[] | Prisma.ImageUncheckedCreateWithoutMemorialsInput[]
-  connectOrCreate?: Prisma.ImageCreateOrConnectWithoutMemorialsInput | Prisma.ImageCreateOrConnectWithoutMemorialsInput[]
+export type ImageUncheckedCreateNestedManyWithoutMemorialInput = {
+  create?: Prisma.XOR<Prisma.ImageCreateWithoutMemorialInput, Prisma.ImageUncheckedCreateWithoutMemorialInput> | Prisma.ImageCreateWithoutMemorialInput[] | Prisma.ImageUncheckedCreateWithoutMemorialInput[]
+  connectOrCreate?: Prisma.ImageCreateOrConnectWithoutMemorialInput | Prisma.ImageCreateOrConnectWithoutMemorialInput[]
+  createMany?: Prisma.ImageCreateManyMemorialInputEnvelope
   connect?: Prisma.ImageWhereUniqueInput | Prisma.ImageWhereUniqueInput[]
 }
 
-export type ImageUpdateManyWithoutMemorialsNestedInput = {
-  create?: Prisma.XOR<Prisma.ImageCreateWithoutMemorialsInput, Prisma.ImageUncheckedCreateWithoutMemorialsInput> | Prisma.ImageCreateWithoutMemorialsInput[] | Prisma.ImageUncheckedCreateWithoutMemorialsInput[]
-  connectOrCreate?: Prisma.ImageCreateOrConnectWithoutMemorialsInput | Prisma.ImageCreateOrConnectWithoutMemorialsInput[]
-  upsert?: Prisma.ImageUpsertWithWhereUniqueWithoutMemorialsInput | Prisma.ImageUpsertWithWhereUniqueWithoutMemorialsInput[]
+export type ImageUpdateManyWithoutMemorialNestedInput = {
+  create?: Prisma.XOR<Prisma.ImageCreateWithoutMemorialInput, Prisma.ImageUncheckedCreateWithoutMemorialInput> | Prisma.ImageCreateWithoutMemorialInput[] | Prisma.ImageUncheckedCreateWithoutMemorialInput[]
+  connectOrCreate?: Prisma.ImageCreateOrConnectWithoutMemorialInput | Prisma.ImageCreateOrConnectWithoutMemorialInput[]
+  upsert?: Prisma.ImageUpsertWithWhereUniqueWithoutMemorialInput | Prisma.ImageUpsertWithWhereUniqueWithoutMemorialInput[]
+  createMany?: Prisma.ImageCreateManyMemorialInputEnvelope
   set?: Prisma.ImageWhereUniqueInput | Prisma.ImageWhereUniqueInput[]
   disconnect?: Prisma.ImageWhereUniqueInput | Prisma.ImageWhereUniqueInput[]
   delete?: Prisma.ImageWhereUniqueInput | Prisma.ImageWhereUniqueInput[]
   connect?: Prisma.ImageWhereUniqueInput | Prisma.ImageWhereUniqueInput[]
-  update?: Prisma.ImageUpdateWithWhereUniqueWithoutMemorialsInput | Prisma.ImageUpdateWithWhereUniqueWithoutMemorialsInput[]
-  updateMany?: Prisma.ImageUpdateManyWithWhereWithoutMemorialsInput | Prisma.ImageUpdateManyWithWhereWithoutMemorialsInput[]
+  update?: Prisma.ImageUpdateWithWhereUniqueWithoutMemorialInput | Prisma.ImageUpdateWithWhereUniqueWithoutMemorialInput[]
+  updateMany?: Prisma.ImageUpdateManyWithWhereWithoutMemorialInput | Prisma.ImageUpdateManyWithWhereWithoutMemorialInput[]
   deleteMany?: Prisma.ImageScalarWhereInput | Prisma.ImageScalarWhereInput[]
 }
 
-export type ImageUncheckedUpdateManyWithoutMemorialsNestedInput = {
-  create?: Prisma.XOR<Prisma.ImageCreateWithoutMemorialsInput, Prisma.ImageUncheckedCreateWithoutMemorialsInput> | Prisma.ImageCreateWithoutMemorialsInput[] | Prisma.ImageUncheckedCreateWithoutMemorialsInput[]
-  connectOrCreate?: Prisma.ImageCreateOrConnectWithoutMemorialsInput | Prisma.ImageCreateOrConnectWithoutMemorialsInput[]
-  upsert?: Prisma.ImageUpsertWithWhereUniqueWithoutMemorialsInput | Prisma.ImageUpsertWithWhereUniqueWithoutMemorialsInput[]
+export type ImageUncheckedUpdateManyWithoutMemorialNestedInput = {
+  create?: Prisma.XOR<Prisma.ImageCreateWithoutMemorialInput, Prisma.ImageUncheckedCreateWithoutMemorialInput> | Prisma.ImageCreateWithoutMemorialInput[] | Prisma.ImageUncheckedCreateWithoutMemorialInput[]
+  connectOrCreate?: Prisma.ImageCreateOrConnectWithoutMemorialInput | Prisma.ImageCreateOrConnectWithoutMemorialInput[]
+  upsert?: Prisma.ImageUpsertWithWhereUniqueWithoutMemorialInput | Prisma.ImageUpsertWithWhereUniqueWithoutMemorialInput[]
+  createMany?: Prisma.ImageCreateManyMemorialInputEnvelope
   set?: Prisma.ImageWhereUniqueInput | Prisma.ImageWhereUniqueInput[]
   disconnect?: Prisma.ImageWhereUniqueInput | Prisma.ImageWhereUniqueInput[]
   delete?: Prisma.ImageWhereUniqueInput | Prisma.ImageWhereUniqueInput[]
   connect?: Prisma.ImageWhereUniqueInput | Prisma.ImageWhereUniqueInput[]
-  update?: Prisma.ImageUpdateWithWhereUniqueWithoutMemorialsInput | Prisma.ImageUpdateWithWhereUniqueWithoutMemorialsInput[]
-  updateMany?: Prisma.ImageUpdateManyWithWhereWithoutMemorialsInput | Prisma.ImageUpdateManyWithWhereWithoutMemorialsInput[]
+  update?: Prisma.ImageUpdateWithWhereUniqueWithoutMemorialInput | Prisma.ImageUpdateWithWhereUniqueWithoutMemorialInput[]
+  updateMany?: Prisma.ImageUpdateManyWithWhereWithoutMemorialInput | Prisma.ImageUpdateManyWithWhereWithoutMemorialInput[]
   deleteMany?: Prisma.ImageScalarWhereInput | Prisma.ImageScalarWhereInput[]
 }
 
-export type ImageCreateWithoutMemorialsInput = {
+export type ImageCreateWithoutMemorialInput = {
   id?: string
   url: string
   description: string
-  memorialId: string
   createdAt?: Date | string
   updatedAt?: Date | string
 }
 
-export type ImageUncheckedCreateWithoutMemorialsInput = {
+export type ImageUncheckedCreateWithoutMemorialInput = {
   id?: string
   url: string
   description: string
-  memorialId: string
   createdAt?: Date | string
   updatedAt?: Date | string
 }
 
-export type ImageCreateOrConnectWithoutMemorialsInput = {
+export type ImageCreateOrConnectWithoutMemorialInput = {
   where: Prisma.ImageWhereUniqueInput
-  create: Prisma.XOR<Prisma.ImageCreateWithoutMemorialsInput, Prisma.ImageUncheckedCreateWithoutMemorialsInput>
+  create: Prisma.XOR<Prisma.ImageCreateWithoutMemorialInput, Prisma.ImageUncheckedCreateWithoutMemorialInput>
 }
 
-export type ImageUpsertWithWhereUniqueWithoutMemorialsInput = {
-  where: Prisma.ImageWhereUniqueInput
-  update: Prisma.XOR<Prisma.ImageUpdateWithoutMemorialsInput, Prisma.ImageUncheckedUpdateWithoutMemorialsInput>
-  create: Prisma.XOR<Prisma.ImageCreateWithoutMemorialsInput, Prisma.ImageUncheckedCreateWithoutMemorialsInput>
+export type ImageCreateManyMemorialInputEnvelope = {
+  data: Prisma.ImageCreateManyMemorialInput | Prisma.ImageCreateManyMemorialInput[]
+  skipDuplicates?: boolean
 }
 
-export type ImageUpdateWithWhereUniqueWithoutMemorialsInput = {
+export type ImageUpsertWithWhereUniqueWithoutMemorialInput = {
   where: Prisma.ImageWhereUniqueInput
-  data: Prisma.XOR<Prisma.ImageUpdateWithoutMemorialsInput, Prisma.ImageUncheckedUpdateWithoutMemorialsInput>
+  update: Prisma.XOR<Prisma.ImageUpdateWithoutMemorialInput, Prisma.ImageUncheckedUpdateWithoutMemorialInput>
+  create: Prisma.XOR<Prisma.ImageCreateWithoutMemorialInput, Prisma.ImageUncheckedCreateWithoutMemorialInput>
 }
 
-export type ImageUpdateManyWithWhereWithoutMemorialsInput = {
+export type ImageUpdateWithWhereUniqueWithoutMemorialInput = {
+  where: Prisma.ImageWhereUniqueInput
+  data: Prisma.XOR<Prisma.ImageUpdateWithoutMemorialInput, Prisma.ImageUncheckedUpdateWithoutMemorialInput>
+}
+
+export type ImageUpdateManyWithWhereWithoutMemorialInput = {
   where: Prisma.ImageScalarWhereInput
-  data: Prisma.XOR<Prisma.ImageUpdateManyMutationInput, Prisma.ImageUncheckedUpdateManyWithoutMemorialsInput>
+  data: Prisma.XOR<Prisma.ImageUpdateManyMutationInput, Prisma.ImageUncheckedUpdateManyWithoutMemorialInput>
 }
 
 export type ImageScalarWhereInput = {
@@ -433,62 +435,38 @@ export type ImageScalarWhereInput = {
   updatedAt?: Prisma.DateTimeFilter<"Image"> | Date | string
 }
 
-export type ImageUpdateWithoutMemorialsInput = {
+export type ImageCreateManyMemorialInput = {
+  id?: string
+  url: string
+  description: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type ImageUpdateWithoutMemorialInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   url?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  memorialId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type ImageUncheckedUpdateWithoutMemorialsInput = {
+export type ImageUncheckedUpdateWithoutMemorialInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   url?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  memorialId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type ImageUncheckedUpdateManyWithoutMemorialsInput = {
+export type ImageUncheckedUpdateManyWithoutMemorialInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   url?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  memorialId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-
-/**
- * Count Type ImageCountOutputType
- */
-
-export type ImageCountOutputType = {
-  memorials: number
-}
-
-export type ImageCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  memorials?: boolean | ImageCountOutputTypeCountMemorialsArgs
-}
-
-/**
- * ImageCountOutputType without action
- */
-export type ImageCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the ImageCountOutputType
-   */
-  select?: Prisma.ImageCountOutputTypeSelect<ExtArgs> | null
-}
-
-/**
- * ImageCountOutputType without action
- */
-export type ImageCountOutputTypeCountMemorialsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.MemorialWhereInput
-}
 
 
 export type ImageSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -498,8 +476,7 @@ export type ImageSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   memorialId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  memorials?: boolean | Prisma.Image$memorialsArgs<ExtArgs>
-  _count?: boolean | Prisma.ImageCountOutputTypeDefaultArgs<ExtArgs>
+  memorial?: boolean | Prisma.MemorialDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["image"]>
 
 export type ImageSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -509,6 +486,7 @@ export type ImageSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   memorialId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  memorial?: boolean | Prisma.MemorialDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["image"]>
 
 export type ImageSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -518,6 +496,7 @@ export type ImageSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   memorialId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  memorial?: boolean | Prisma.MemorialDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["image"]>
 
 export type ImageSelectScalar = {
@@ -531,16 +510,19 @@ export type ImageSelectScalar = {
 
 export type ImageOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "url" | "description" | "memorialId" | "createdAt" | "updatedAt", ExtArgs["result"]["image"]>
 export type ImageInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  memorials?: boolean | Prisma.Image$memorialsArgs<ExtArgs>
-  _count?: boolean | Prisma.ImageCountOutputTypeDefaultArgs<ExtArgs>
+  memorial?: boolean | Prisma.MemorialDefaultArgs<ExtArgs>
 }
-export type ImageIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
-export type ImageIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
+export type ImageIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  memorial?: boolean | Prisma.MemorialDefaultArgs<ExtArgs>
+}
+export type ImageIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  memorial?: boolean | Prisma.MemorialDefaultArgs<ExtArgs>
+}
 
 export type $ImagePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Image"
   objects: {
-    memorials: Prisma.$MemorialPayload<ExtArgs>[]
+    memorial: Prisma.$MemorialPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -943,7 +925,7 @@ readonly fields: ImageFieldRefs;
  */
 export interface Prisma__ImageClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  memorials<T extends Prisma.Image$memorialsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Image$memorialsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MemorialPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  memorial<T extends Prisma.MemorialDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.MemorialDefaultArgs<ExtArgs>>): Prisma.Prisma__MemorialClient<runtime.Types.Result.GetResult<Prisma.$MemorialPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1233,6 +1215,10 @@ export type ImageCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extension
    */
   data: Prisma.ImageCreateManyInput | Prisma.ImageCreateManyInput[]
   skipDuplicates?: boolean
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ImageIncludeCreateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -1303,6 +1289,10 @@ export type ImageUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extension
    * Limit how many Images to update.
    */
   limit?: number
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ImageIncludeUpdateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -1369,30 +1359,6 @@ export type ImageDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Interna
    * Limit how many Images to delete.
    */
   limit?: number
-}
-
-/**
- * Image.memorials
- */
-export type Image$memorialsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the Memorial
-   */
-  select?: Prisma.MemorialSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the Memorial
-   */
-  omit?: Prisma.MemorialOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.MemorialInclude<ExtArgs> | null
-  where?: Prisma.MemorialWhereInput
-  orderBy?: Prisma.MemorialOrderByWithRelationInput | Prisma.MemorialOrderByWithRelationInput[]
-  cursor?: Prisma.MemorialWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.MemorialScalarFieldEnum | Prisma.MemorialScalarFieldEnum[]
 }
 
 /**

@@ -4,4 +4,6 @@ model Country {
   code         String    @unique
   createdAt    DateTime  @default(now())
   updatedAt    DateTime  @updatedAt
+
+  memorials    Memorial[]
 }

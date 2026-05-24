@@ -22,7 +22,7 @@ export class StorageService {
       const fileName = `${baseName}`;
       const folderPath = data.folderPath || 'default';
       const normalizedPath = folderPath.replace(/^\/|\/$/g, '');
-      const key = `Tenants/${normalizedPath}/${fileName}`;
+      const key = `${normalizedPath}/${fileName}`;
 
       const command = new PutObjectCommand({
         Bucket: process.env.AWS_BUCKET_NAME || 'fleetnexa',

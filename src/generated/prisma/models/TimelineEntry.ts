@@ -232,7 +232,7 @@ export type TimelineEntryWhereInput = {
   memorialId?: Prisma.StringFilter<"TimelineEntry"> | string
   createdAt?: Prisma.DateTimeFilter<"TimelineEntry"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"TimelineEntry"> | Date | string
-  memorials?: Prisma.MemorialListRelationFilter
+  memorial?: Prisma.XOR<Prisma.MemorialScalarRelationFilter, Prisma.MemorialWhereInput>
 }
 
 export type TimelineEntryOrderByWithRelationInput = {
@@ -243,7 +243,7 @@ export type TimelineEntryOrderByWithRelationInput = {
   memorialId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  memorials?: Prisma.MemorialOrderByRelationAggregateInput
+  memorial?: Prisma.MemorialOrderByWithRelationInput
 }
 
 export type TimelineEntryWhereUniqueInput = Prisma.AtLeast<{
@@ -257,7 +257,7 @@ export type TimelineEntryWhereUniqueInput = Prisma.AtLeast<{
   memorialId?: Prisma.StringFilter<"TimelineEntry"> | string
   createdAt?: Prisma.DateTimeFilter<"TimelineEntry"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"TimelineEntry"> | Date | string
-  memorials?: Prisma.MemorialListRelationFilter
+  memorial?: Prisma.XOR<Prisma.MemorialScalarRelationFilter, Prisma.MemorialWhereInput>
 }, "id">
 
 export type TimelineEntryOrderByWithAggregationInput = {
@@ -293,10 +293,9 @@ export type TimelineEntryCreateInput = {
   title: string
   description: string
   year: number
-  memorialId: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  memorials?: Prisma.MemorialCreateNestedManyWithoutTimelineInput
+  memorial: Prisma.MemorialCreateNestedOneWithoutTimelineInput
 }
 
 export type TimelineEntryUncheckedCreateInput = {
@@ -307,7 +306,6 @@ export type TimelineEntryUncheckedCreateInput = {
   memorialId: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  memorials?: Prisma.MemorialUncheckedCreateNestedManyWithoutTimelineInput
 }
 
 export type TimelineEntryUpdateInput = {
@@ -315,10 +313,9 @@ export type TimelineEntryUpdateInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   year?: Prisma.IntFieldUpdateOperationsInput | number
-  memorialId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  memorials?: Prisma.MemorialUpdateManyWithoutTimelineNestedInput
+  memorial?: Prisma.MemorialUpdateOneRequiredWithoutTimelineNestedInput
 }
 
 export type TimelineEntryUncheckedUpdateInput = {
@@ -329,7 +326,6 @@ export type TimelineEntryUncheckedUpdateInput = {
   memorialId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  memorials?: Prisma.MemorialUncheckedUpdateManyWithoutTimelineNestedInput
 }
 
 export type TimelineEntryCreateManyInput = {
@@ -347,7 +343,6 @@ export type TimelineEntryUpdateManyMutationInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   year?: Prisma.IntFieldUpdateOperationsInput | number
-  memorialId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -410,41 +405,45 @@ export type TimelineEntrySumOrderByAggregateInput = {
   year?: Prisma.SortOrder
 }
 
-export type TimelineEntryCreateNestedManyWithoutMemorialsInput = {
-  create?: Prisma.XOR<Prisma.TimelineEntryCreateWithoutMemorialsInput, Prisma.TimelineEntryUncheckedCreateWithoutMemorialsInput> | Prisma.TimelineEntryCreateWithoutMemorialsInput[] | Prisma.TimelineEntryUncheckedCreateWithoutMemorialsInput[]
-  connectOrCreate?: Prisma.TimelineEntryCreateOrConnectWithoutMemorialsInput | Prisma.TimelineEntryCreateOrConnectWithoutMemorialsInput[]
+export type TimelineEntryCreateNestedManyWithoutMemorialInput = {
+  create?: Prisma.XOR<Prisma.TimelineEntryCreateWithoutMemorialInput, Prisma.TimelineEntryUncheckedCreateWithoutMemorialInput> | Prisma.TimelineEntryCreateWithoutMemorialInput[] | Prisma.TimelineEntryUncheckedCreateWithoutMemorialInput[]
+  connectOrCreate?: Prisma.TimelineEntryCreateOrConnectWithoutMemorialInput | Prisma.TimelineEntryCreateOrConnectWithoutMemorialInput[]
+  createMany?: Prisma.TimelineEntryCreateManyMemorialInputEnvelope
   connect?: Prisma.TimelineEntryWhereUniqueInput | Prisma.TimelineEntryWhereUniqueInput[]
 }
 
-export type TimelineEntryUncheckedCreateNestedManyWithoutMemorialsInput = {
-  create?: Prisma.XOR<Prisma.TimelineEntryCreateWithoutMemorialsInput, Prisma.TimelineEntryUncheckedCreateWithoutMemorialsInput> | Prisma.TimelineEntryCreateWithoutMemorialsInput[] | Prisma.TimelineEntryUncheckedCreateWithoutMemorialsInput[]
-  connectOrCreate?: Prisma.TimelineEntryCreateOrConnectWithoutMemorialsInput | Prisma.TimelineEntryCreateOrConnectWithoutMemorialsInput[]
+export type TimelineEntryUncheckedCreateNestedManyWithoutMemorialInput = {
+  create?: Prisma.XOR<Prisma.TimelineEntryCreateWithoutMemorialInput, Prisma.TimelineEntryUncheckedCreateWithoutMemorialInput> | Prisma.TimelineEntryCreateWithoutMemorialInput[] | Prisma.TimelineEntryUncheckedCreateWithoutMemorialInput[]
+  connectOrCreate?: Prisma.TimelineEntryCreateOrConnectWithoutMemorialInput | Prisma.TimelineEntryCreateOrConnectWithoutMemorialInput[]
+  createMany?: Prisma.TimelineEntryCreateManyMemorialInputEnvelope
   connect?: Prisma.TimelineEntryWhereUniqueInput | Prisma.TimelineEntryWhereUniqueInput[]
 }
 
-export type TimelineEntryUpdateManyWithoutMemorialsNestedInput = {
-  create?: Prisma.XOR<Prisma.TimelineEntryCreateWithoutMemorialsInput, Prisma.TimelineEntryUncheckedCreateWithoutMemorialsInput> | Prisma.TimelineEntryCreateWithoutMemorialsInput[] | Prisma.TimelineEntryUncheckedCreateWithoutMemorialsInput[]
-  connectOrCreate?: Prisma.TimelineEntryCreateOrConnectWithoutMemorialsInput | Prisma.TimelineEntryCreateOrConnectWithoutMemorialsInput[]
-  upsert?: Prisma.TimelineEntryUpsertWithWhereUniqueWithoutMemorialsInput | Prisma.TimelineEntryUpsertWithWhereUniqueWithoutMemorialsInput[]
+export type TimelineEntryUpdateManyWithoutMemorialNestedInput = {
+  create?: Prisma.XOR<Prisma.TimelineEntryCreateWithoutMemorialInput, Prisma.TimelineEntryUncheckedCreateWithoutMemorialInput> | Prisma.TimelineEntryCreateWithoutMemorialInput[] | Prisma.TimelineEntryUncheckedCreateWithoutMemorialInput[]
+  connectOrCreate?: Prisma.TimelineEntryCreateOrConnectWithoutMemorialInput | Prisma.TimelineEntryCreateOrConnectWithoutMemorialInput[]
+  upsert?: Prisma.TimelineEntryUpsertWithWhereUniqueWithoutMemorialInput | Prisma.TimelineEntryUpsertWithWhereUniqueWithoutMemorialInput[]
+  createMany?: Prisma.TimelineEntryCreateManyMemorialInputEnvelope
   set?: Prisma.TimelineEntryWhereUniqueInput | Prisma.TimelineEntryWhereUniqueInput[]
   disconnect?: Prisma.TimelineEntryWhereUniqueInput | Prisma.TimelineEntryWhereUniqueInput[]
   delete?: Prisma.TimelineEntryWhereUniqueInput | Prisma.TimelineEntryWhereUniqueInput[]
   connect?: Prisma.TimelineEntryWhereUniqueInput | Prisma.TimelineEntryWhereUniqueInput[]
-  update?: Prisma.TimelineEntryUpdateWithWhereUniqueWithoutMemorialsInput | Prisma.TimelineEntryUpdateWithWhereUniqueWithoutMemorialsInput[]
-  updateMany?: Prisma.TimelineEntryUpdateManyWithWhereWithoutMemorialsInput | Prisma.TimelineEntryUpdateManyWithWhereWithoutMemorialsInput[]
+  update?: Prisma.TimelineEntryUpdateWithWhereUniqueWithoutMemorialInput | Prisma.TimelineEntryUpdateWithWhereUniqueWithoutMemorialInput[]
+  updateMany?: Prisma.TimelineEntryUpdateManyWithWhereWithoutMemorialInput | Prisma.TimelineEntryUpdateManyWithWhereWithoutMemorialInput[]
   deleteMany?: Prisma.TimelineEntryScalarWhereInput | Prisma.TimelineEntryScalarWhereInput[]
 }
 
-export type TimelineEntryUncheckedUpdateManyWithoutMemorialsNestedInput = {
-  create?: Prisma.XOR<Prisma.TimelineEntryCreateWithoutMemorialsInput, Prisma.TimelineEntryUncheckedCreateWithoutMemorialsInput> | Prisma.TimelineEntryCreateWithoutMemorialsInput[] | Prisma.TimelineEntryUncheckedCreateWithoutMemorialsInput[]
-  connectOrCreate?: Prisma.TimelineEntryCreateOrConnectWithoutMemorialsInput | Prisma.TimelineEntryCreateOrConnectWithoutMemorialsInput[]
-  upsert?: Prisma.TimelineEntryUpsertWithWhereUniqueWithoutMemorialsInput | Prisma.TimelineEntryUpsertWithWhereUniqueWithoutMemorialsInput[]
+export type TimelineEntryUncheckedUpdateManyWithoutMemorialNestedInput = {
+  create?: Prisma.XOR<Prisma.TimelineEntryCreateWithoutMemorialInput, Prisma.TimelineEntryUncheckedCreateWithoutMemorialInput> | Prisma.TimelineEntryCreateWithoutMemorialInput[] | Prisma.TimelineEntryUncheckedCreateWithoutMemorialInput[]
+  connectOrCreate?: Prisma.TimelineEntryCreateOrConnectWithoutMemorialInput | Prisma.TimelineEntryCreateOrConnectWithoutMemorialInput[]
+  upsert?: Prisma.TimelineEntryUpsertWithWhereUniqueWithoutMemorialInput | Prisma.TimelineEntryUpsertWithWhereUniqueWithoutMemorialInput[]
+  createMany?: Prisma.TimelineEntryCreateManyMemorialInputEnvelope
   set?: Prisma.TimelineEntryWhereUniqueInput | Prisma.TimelineEntryWhereUniqueInput[]
   disconnect?: Prisma.TimelineEntryWhereUniqueInput | Prisma.TimelineEntryWhereUniqueInput[]
   delete?: Prisma.TimelineEntryWhereUniqueInput | Prisma.TimelineEntryWhereUniqueInput[]
   connect?: Prisma.TimelineEntryWhereUniqueInput | Prisma.TimelineEntryWhereUniqueInput[]
-  update?: Prisma.TimelineEntryUpdateWithWhereUniqueWithoutMemorialsInput | Prisma.TimelineEntryUpdateWithWhereUniqueWithoutMemorialsInput[]
-  updateMany?: Prisma.TimelineEntryUpdateManyWithWhereWithoutMemorialsInput | Prisma.TimelineEntryUpdateManyWithWhereWithoutMemorialsInput[]
+  update?: Prisma.TimelineEntryUpdateWithWhereUniqueWithoutMemorialInput | Prisma.TimelineEntryUpdateWithWhereUniqueWithoutMemorialInput[]
+  updateMany?: Prisma.TimelineEntryUpdateManyWithWhereWithoutMemorialInput | Prisma.TimelineEntryUpdateManyWithWhereWithoutMemorialInput[]
   deleteMany?: Prisma.TimelineEntryScalarWhereInput | Prisma.TimelineEntryScalarWhereInput[]
 }
 
@@ -456,45 +455,48 @@ export type IntFieldUpdateOperationsInput = {
   divide?: number
 }
 
-export type TimelineEntryCreateWithoutMemorialsInput = {
+export type TimelineEntryCreateWithoutMemorialInput = {
   id?: string
   title: string
   description: string
   year: number
-  memorialId: string
   createdAt?: Date | string
   updatedAt?: Date | string
 }
 
-export type TimelineEntryUncheckedCreateWithoutMemorialsInput = {
+export type TimelineEntryUncheckedCreateWithoutMemorialInput = {
   id?: string
   title: string
   description: string
   year: number
-  memorialId: string
   createdAt?: Date | string
   updatedAt?: Date | string
 }
 
-export type TimelineEntryCreateOrConnectWithoutMemorialsInput = {
+export type TimelineEntryCreateOrConnectWithoutMemorialInput = {
   where: Prisma.TimelineEntryWhereUniqueInput
-  create: Prisma.XOR<Prisma.TimelineEntryCreateWithoutMemorialsInput, Prisma.TimelineEntryUncheckedCreateWithoutMemorialsInput>
+  create: Prisma.XOR<Prisma.TimelineEntryCreateWithoutMemorialInput, Prisma.TimelineEntryUncheckedCreateWithoutMemorialInput>
 }
 
-export type TimelineEntryUpsertWithWhereUniqueWithoutMemorialsInput = {
-  where: Prisma.TimelineEntryWhereUniqueInput
-  update: Prisma.XOR<Prisma.TimelineEntryUpdateWithoutMemorialsInput, Prisma.TimelineEntryUncheckedUpdateWithoutMemorialsInput>
-  create: Prisma.XOR<Prisma.TimelineEntryCreateWithoutMemorialsInput, Prisma.TimelineEntryUncheckedCreateWithoutMemorialsInput>
+export type TimelineEntryCreateManyMemorialInputEnvelope = {
+  data: Prisma.TimelineEntryCreateManyMemorialInput | Prisma.TimelineEntryCreateManyMemorialInput[]
+  skipDuplicates?: boolean
 }
 
-export type TimelineEntryUpdateWithWhereUniqueWithoutMemorialsInput = {
+export type TimelineEntryUpsertWithWhereUniqueWithoutMemorialInput = {
   where: Prisma.TimelineEntryWhereUniqueInput
-  data: Prisma.XOR<Prisma.TimelineEntryUpdateWithoutMemorialsInput, Prisma.TimelineEntryUncheckedUpdateWithoutMemorialsInput>
+  update: Prisma.XOR<Prisma.TimelineEntryUpdateWithoutMemorialInput, Prisma.TimelineEntryUncheckedUpdateWithoutMemorialInput>
+  create: Prisma.XOR<Prisma.TimelineEntryCreateWithoutMemorialInput, Prisma.TimelineEntryUncheckedCreateWithoutMemorialInput>
 }
 
-export type TimelineEntryUpdateManyWithWhereWithoutMemorialsInput = {
+export type TimelineEntryUpdateWithWhereUniqueWithoutMemorialInput = {
+  where: Prisma.TimelineEntryWhereUniqueInput
+  data: Prisma.XOR<Prisma.TimelineEntryUpdateWithoutMemorialInput, Prisma.TimelineEntryUncheckedUpdateWithoutMemorialInput>
+}
+
+export type TimelineEntryUpdateManyWithWhereWithoutMemorialInput = {
   where: Prisma.TimelineEntryScalarWhereInput
-  data: Prisma.XOR<Prisma.TimelineEntryUpdateManyMutationInput, Prisma.TimelineEntryUncheckedUpdateManyWithoutMemorialsInput>
+  data: Prisma.XOR<Prisma.TimelineEntryUpdateManyMutationInput, Prisma.TimelineEntryUncheckedUpdateManyWithoutMemorialInput>
 }
 
 export type TimelineEntryScalarWhereInput = {
@@ -510,65 +512,42 @@ export type TimelineEntryScalarWhereInput = {
   updatedAt?: Prisma.DateTimeFilter<"TimelineEntry"> | Date | string
 }
 
-export type TimelineEntryUpdateWithoutMemorialsInput = {
+export type TimelineEntryCreateManyMemorialInput = {
+  id?: string
+  title: string
+  description: string
+  year: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type TimelineEntryUpdateWithoutMemorialInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   year?: Prisma.IntFieldUpdateOperationsInput | number
-  memorialId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type TimelineEntryUncheckedUpdateWithoutMemorialsInput = {
+export type TimelineEntryUncheckedUpdateWithoutMemorialInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   year?: Prisma.IntFieldUpdateOperationsInput | number
-  memorialId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type TimelineEntryUncheckedUpdateManyWithoutMemorialsInput = {
+export type TimelineEntryUncheckedUpdateManyWithoutMemorialInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   year?: Prisma.IntFieldUpdateOperationsInput | number
-  memorialId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-
-/**
- * Count Type TimelineEntryCountOutputType
- */
-
-export type TimelineEntryCountOutputType = {
-  memorials: number
-}
-
-export type TimelineEntryCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  memorials?: boolean | TimelineEntryCountOutputTypeCountMemorialsArgs
-}
-
-/**
- * TimelineEntryCountOutputType without action
- */
-export type TimelineEntryCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the TimelineEntryCountOutputType
-   */
-  select?: Prisma.TimelineEntryCountOutputTypeSelect<ExtArgs> | null
-}
-
-/**
- * TimelineEntryCountOutputType without action
- */
-export type TimelineEntryCountOutputTypeCountMemorialsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.MemorialWhereInput
-}
 
 
 export type TimelineEntrySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -579,8 +558,7 @@ export type TimelineEntrySelect<ExtArgs extends runtime.Types.Extensions.Interna
   memorialId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  memorials?: boolean | Prisma.TimelineEntry$memorialsArgs<ExtArgs>
-  _count?: boolean | Prisma.TimelineEntryCountOutputTypeDefaultArgs<ExtArgs>
+  memorial?: boolean | Prisma.MemorialDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["timelineEntry"]>
 
 export type TimelineEntrySelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -591,6 +569,7 @@ export type TimelineEntrySelectCreateManyAndReturn<ExtArgs extends runtime.Types
   memorialId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  memorial?: boolean | Prisma.MemorialDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["timelineEntry"]>
 
 export type TimelineEntrySelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -601,6 +580,7 @@ export type TimelineEntrySelectUpdateManyAndReturn<ExtArgs extends runtime.Types
   memorialId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  memorial?: boolean | Prisma.MemorialDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["timelineEntry"]>
 
 export type TimelineEntrySelectScalar = {
@@ -615,16 +595,19 @@ export type TimelineEntrySelectScalar = {
 
 export type TimelineEntryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "description" | "year" | "memorialId" | "createdAt" | "updatedAt", ExtArgs["result"]["timelineEntry"]>
 export type TimelineEntryInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  memorials?: boolean | Prisma.TimelineEntry$memorialsArgs<ExtArgs>
-  _count?: boolean | Prisma.TimelineEntryCountOutputTypeDefaultArgs<ExtArgs>
+  memorial?: boolean | Prisma.MemorialDefaultArgs<ExtArgs>
 }
-export type TimelineEntryIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
-export type TimelineEntryIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
+export type TimelineEntryIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  memorial?: boolean | Prisma.MemorialDefaultArgs<ExtArgs>
+}
+export type TimelineEntryIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  memorial?: boolean | Prisma.MemorialDefaultArgs<ExtArgs>
+}
 
 export type $TimelineEntryPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "TimelineEntry"
   objects: {
-    memorials: Prisma.$MemorialPayload<ExtArgs>[]
+    memorial: Prisma.$MemorialPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1028,7 +1011,7 @@ readonly fields: TimelineEntryFieldRefs;
  */
 export interface Prisma__TimelineEntryClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  memorials<T extends Prisma.TimelineEntry$memorialsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.TimelineEntry$memorialsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MemorialPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  memorial<T extends Prisma.MemorialDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.MemorialDefaultArgs<ExtArgs>>): Prisma.Prisma__MemorialClient<runtime.Types.Result.GetResult<Prisma.$MemorialPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1319,6 +1302,10 @@ export type TimelineEntryCreateManyAndReturnArgs<ExtArgs extends runtime.Types.E
    */
   data: Prisma.TimelineEntryCreateManyInput | Prisma.TimelineEntryCreateManyInput[]
   skipDuplicates?: boolean
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TimelineEntryIncludeCreateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -1389,6 +1376,10 @@ export type TimelineEntryUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.E
    * Limit how many TimelineEntries to update.
    */
   limit?: number
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TimelineEntryIncludeUpdateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -1455,30 +1446,6 @@ export type TimelineEntryDeleteManyArgs<ExtArgs extends runtime.Types.Extensions
    * Limit how many TimelineEntries to delete.
    */
   limit?: number
-}
-
-/**
- * TimelineEntry.memorials
- */
-export type TimelineEntry$memorialsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the Memorial
-   */
-  select?: Prisma.MemorialSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the Memorial
-   */
-  omit?: Prisma.MemorialOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.MemorialInclude<ExtArgs> | null
-  where?: Prisma.MemorialWhereInput
-  orderBy?: Prisma.MemorialOrderByWithRelationInput | Prisma.MemorialOrderByWithRelationInput[]
-  cursor?: Prisma.MemorialWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.MemorialScalarFieldEnum | Prisma.MemorialScalarFieldEnum[]
 }
 
 /**
