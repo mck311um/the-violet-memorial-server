@@ -12,6 +12,32 @@ export class UserService {
     private readonly prisma: PrismaService,
     private readonly userRepo: UserRepository,
   ) {}
+
+  async getCurrentUser(userId: string) {
+    try {
+      const user = await this.userRepo.getUserById(userId);
+
+      if (!user) {
+        this.logger.warn(`User not found with ID: ${userId}`);
+        throw new Error('User not found');
+      }
+
+      return {
+        id: user.id,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        organizationId: user.organizationId,
+        organization: user.organization,
+        role: user.role,
+        profilePicture: user.profilePicture,
+      };
+    } catch (error: any) {
+      this.logger.error(error.message, error.stack);
+      throw error;
+    }
+  }
+
   async createUser(newUser: CreateUserDto) {
     try {
       const existingUser = await this.userRepo.getUserByEmail(newUser.email);

@@ -30,6 +30,7 @@ export class UserRepository {
       updatedAt: true,
       credential: true,
       passwordHistory: true,
+      organization: true,
       otps: true,
       sessions: true,
     };
