@@ -2,6 +2,9 @@ import { IsString } from 'class-validator';
 
 export class CreateMemorialDto {
   @IsString()
+  id: string = '';
+
+  @IsString()
   name: string = '';
 
   @IsString()
@@ -26,5 +29,5 @@ export class CreateMemorialDto {
   about: string = '';
 
   @IsString()
-  profilePicture: string = '';
+  potraitUrl: string = '';
 }

@@ -18,9 +18,8 @@ export class StorageService {
       }
 
       const fileId = uuidv4();
-      const fileExtension = path.extname(file.originalname);
       const baseName = data.fileName || fileId;
-      const fileName = `${baseName}${fileExtension}`;
+      const fileName = `${baseName}`;
       const folderPath = data.folderPath || 'default';
       const normalizedPath = folderPath.replace(/^\/|\/$/g, '');
       const key = `Tenants/${normalizedPath}/${fileName}`;

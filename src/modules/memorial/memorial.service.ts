@@ -1,12 +1,16 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { PrismaService } from '../../prisma/prisma.service';
 import { CreateMemorialDto } from './dto/create-memorial.dto';
+import { TimelineService } from './service/timeline.service';
 
 @Injectable()
 export class MemorialService {
   private readonly logger = new Logger(MemorialService.name);
 
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly timelineService: TimelineService,
+  ) {}
 
   async getAllMemorials() {
     try {
@@ -30,11 +34,24 @@ export class MemorialService {
           occupation: data.occupation,
           remembrance: data.remembrance,
           about: data.about,
-          potraitUrl: data.profilePicture,
+          potraitUrl: data.potraitUrl,
           slug: this.generateSlug(data.name),
           createdBy: userId,
         },
       });
+
+      const country = await this.prisma.country.findUnique({
+        where: {
+          id: data.countryId,
+        },
+      });
+
+      await this.timelineService.addTimelineEntry(
+        memorial.id,
+        'Birth',
+        `${data.name} was born in ${country?.name || 'Unknown Country'} on ${this.formatDate(data.dateOfBirth)}.`,
+        new Date(data.dateOfBirth).getFullYear(),
+      );
 
       const memorials = await this.getAllMemorials();
 
@@ -54,5 +71,15 @@ export class MemorialService {
       .toLowerCase()
       .replace(/[^a-z0-9]+/g, '-')
       .replace(/^-+|-+$/g, '');
+  }
+
+  private formatDate(dateString: string): string {
+    const date = new Date(dateString);
+    const options: Intl.DateTimeFormatOptions = {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    };
+    return date.toLocaleDateString('en-US', options);
   }
 }
