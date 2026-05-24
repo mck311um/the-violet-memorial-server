@@ -343,16 +343,8 @@ export type AuditLogMinOrderByAggregateInput = {
   createdAt?: Prisma.SortOrder
 }
 
-export type StringFieldUpdateOperationsInput = {
-  set?: string
-}
-
 export type EnumAuthActionFieldUpdateOperationsInput = {
   set?: $Enums.AuthAction
-}
-
-export type DateTimeFieldUpdateOperationsInput = {
-  set?: Date | string
 }
 
 

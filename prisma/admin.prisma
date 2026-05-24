@@ -1,0 +1,7 @@
+model Country {
+  id           String    @id @default(dbgenerated("gen_random_uuid()"))
+  name         String
+  code         String    @unique
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+}

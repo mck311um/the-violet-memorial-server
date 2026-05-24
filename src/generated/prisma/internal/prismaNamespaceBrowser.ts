@@ -51,13 +51,18 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
+  Country: 'Country',
   AuditLog: 'AuditLog',
   Session: 'Session',
   UserCredential: 'UserCredential',
   PasswordHistory: 'PasswordHistory',
   Otp: 'Otp',
+  Memorial: 'Memorial',
+  Image: 'Image',
+  TimelineEntry: 'TimelineEntry',
   Resource: 'Resource',
-  User: 'User'
+  User: 'User',
+  Organization: 'Organization'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -74,6 +79,17 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 } as const)
 
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
+
+
+export const CountryScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  code: 'code',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CountryScalarFieldEnum = (typeof CountryScalarFieldEnum)[keyof typeof CountryScalarFieldEnum]
 
 
 export const AuditLogScalarFieldEnum = {
@@ -133,6 +149,50 @@ export const OtpScalarFieldEnum = {
 export type OtpScalarFieldEnum = (typeof OtpScalarFieldEnum)[keyof typeof OtpScalarFieldEnum]
 
 
+export const MemorialScalarFieldEnum = {
+  id: 'id',
+  slug: 'slug',
+  name: 'name',
+  countryId: 'countryId',
+  occupation: 'occupation',
+  remembrance: 'remembrance',
+  potraitUrl: 'potraitUrl',
+  dateOfBirth: 'dateOfBirth',
+  dateOfDeath: 'dateOfDeath',
+  about: 'about',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  createdBy: 'createdBy'
+} as const
+
+export type MemorialScalarFieldEnum = (typeof MemorialScalarFieldEnum)[keyof typeof MemorialScalarFieldEnum]
+
+
+export const ImageScalarFieldEnum = {
+  id: 'id',
+  url: 'url',
+  description: 'description',
+  memorialId: 'memorialId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ImageScalarFieldEnum = (typeof ImageScalarFieldEnum)[keyof typeof ImageScalarFieldEnum]
+
+
+export const TimelineEntryScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  year: 'year',
+  memorialId: 'memorialId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type TimelineEntryScalarFieldEnum = (typeof TimelineEntryScalarFieldEnum)[keyof typeof TimelineEntryScalarFieldEnum]
+
+
 export const ResourceScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -151,11 +211,25 @@ export const UserScalarFieldEnum = {
   firstName: 'firstName',
   lastName: 'lastName',
   email: 'email',
+  organizationId: 'organizationId',
+  role: 'role',
+  profilePicture: 'profilePicture',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+
+
+export const OrganizationScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  slug: 'slug',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type OrganizationScalarFieldEnum = (typeof OrganizationScalarFieldEnum)[keyof typeof OrganizationScalarFieldEnum]
 
 
 export const SortOrder = {

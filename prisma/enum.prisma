@@ -13,3 +13,13 @@ enum OtpType {
   PHONE_VERIFICATION
   TWO_FACTOR
 }
+
+enum MemorialCategory {
+  WOMEN
+  CHILDREN
+}
+
+enum UserRole {
+  ADMIN
+  USER
+}

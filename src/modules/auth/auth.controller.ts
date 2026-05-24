@@ -30,9 +30,9 @@ export class AuthController {
   }
 
   @UseGuards(LocalAuthGuard)
-  @Post('tenant/login')
+  @Post('login')
   async login(@Request() req, @Res({ passthrough: true }) res: Response) {
-    const result = await this.authService.login(req.user.id);
+    const result = await this.authService.login({ userId: req.user.id });
 
     if (!result) {
       throw new Error('Login failed');

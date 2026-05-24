@@ -29,8 +29,8 @@ export * from "./enums.js"
  * const prisma = new PrismaClient({
  *   adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL })
  * })
- * // Fetch zero or more AuditLogs
- * const auditLogs = await prisma.auditLog.findMany()
+ * // Fetch zero or more Countries
+ * const countries = await prisma.country.findMany()
  * ```
  * 
  * Read more in our [docs](https://pris.ly/d/client).
@@ -39,6 +39,11 @@ export const PrismaClient = $Class.getPrismaClientClass()
 export type PrismaClient<LogOpts extends Prisma.LogLevel = never, OmitOpts extends Prisma.PrismaClientOptions["omit"] = Prisma.PrismaClientOptions["omit"], ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = $Class.PrismaClient<LogOpts, OmitOpts, ExtArgs>
 export { Prisma }
 
+/**
+ * Model Country
+ * 
+ */
+export type Country = Prisma.CountryModel
 /**
  * Model AuditLog
  * 
@@ -65,6 +70,21 @@ export type PasswordHistory = Prisma.PasswordHistoryModel
  */
 export type Otp = Prisma.OtpModel
 /**
+ * Model Memorial
+ * 
+ */
+export type Memorial = Prisma.MemorialModel
+/**
+ * Model Image
+ * 
+ */
+export type Image = Prisma.ImageModel
+/**
+ * Model TimelineEntry
+ * 
+ */
+export type TimelineEntry = Prisma.TimelineEntryModel
+/**
  * Model Resource
  * 
  */
@@ -74,3 +94,8 @@ export type Resource = Prisma.ResourceModel
  * 
  */
 export type User = Prisma.UserModel
+/**
+ * Model Organization
+ * 
+ */
+export type Organization = Prisma.OrganizationModel

@@ -18,6 +18,11 @@ export { Prisma }
 export * as $Enums from './enums.js'
 export * from './enums.js';
 /**
+ * Model Country
+ * 
+ */
+export type Country = Prisma.CountryModel
+/**
  * Model AuditLog
  * 
  */
@@ -43,6 +48,21 @@ export type PasswordHistory = Prisma.PasswordHistoryModel
  */
 export type Otp = Prisma.OtpModel
 /**
+ * Model Memorial
+ * 
+ */
+export type Memorial = Prisma.MemorialModel
+/**
+ * Model Image
+ * 
+ */
+export type Image = Prisma.ImageModel
+/**
+ * Model TimelineEntry
+ * 
+ */
+export type TimelineEntry = Prisma.TimelineEntryModel
+/**
  * Model Resource
  * 
  */
@@ -52,3 +72,8 @@ export type Resource = Prisma.ResourceModel
  * 
  */
 export type User = Prisma.UserModel
+/**
+ * Model Organization
+ * 
+ */
+export type Organization = Prisma.OrganizationModel

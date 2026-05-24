@@ -1,0 +1,44 @@
+model Memorial {
+    id              String    @id @default(dbgenerated("gen_random_uuid()"))
+    slug            String    @unique
+    name            String
+    countryId       String
+    occupation      String
+    remembrance     String
+    potraitUrl      String
+    dateOfBirth     DateTime
+    dateOfDeath     DateTime
+    about           String
+
+    createdAt       DateTime @default(now())
+    updatedAt       DateTime @updatedAt
+    createdBy       String
+
+
+    createdByUser   User @relation(fields: [createdBy], references: [id])
+    images          Image[]
+    timeline TimelineEntry[]
+}
+
+model Image {
+    id          String    @id @default(dbgenerated("gen_random_uuid()"))
+    url         String    @unique
+    description String
+    memorialId  String
+
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+    memorials   Memorial[]
+}
+
+model TimelineEntry {
+    id          String    @id @default(dbgenerated("gen_random_uuid()"))
+    title       String
+    description String
+    year        Int
+    memorialId  String
+
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+    memorials   Memorial[]
+}
