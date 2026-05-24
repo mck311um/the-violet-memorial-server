@@ -1,0 +1,67 @@
+name: Deploy The Violet Memorial Server
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy-prod:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to PROD server
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            cd /wwwroot/the-violet-memorial-server
+            git reset --hard
+            git clean -fd
+            git pull origin main
+            npm ci
+            npx prisma migrate deploy
+            npx prisma generate
+            npm run build
+            sudo systemctl restart the-violet-memorial-server.service
+
+  notify:
+    needs: [deploy-prod]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Discord Notify
+        run: |
+          STATUS="success"
+          if [ "${{ needs.deploy-prod.result }}" = "failure" ]; then
+            STATUS="failure"
+          fi
+          ENVIRONMENT="PRODUCTION"
+
+          if [ "$STATUS" = "success" ]; then
+            COLOR=3066993
+          else
+            COLOR=15158332
+          fi
+
+          curl -H "Content-Type: application/json" \
+            -X POST \
+            -d "{
+              \"username\": \"Server Deploy Bot\",
+              \"embeds\": [{
+                \"title\": \"The Violet Memorial Server Deployment\",
+                \"color\": $COLOR,
+                \"fields\": [
+                  {\"name\": \"Status\", \"value\": \"$STATUS\", \"inline\": true},
+                  {\"name\": \"Environment\", \"value\": \"$ENVIRONMENT\", \"inline\": true},
+                  {\"name\": \"Branch\", \"value\": \"${{ github.ref_name }}\", \"inline\": true},
+                  {\"name\": \"Author\", \"value\": \"${{ github.actor }}\", \"inline\": true},
+                  {\"name\": \"Commit\", \"value\": \"${{ github.sha }}\", \"inline\": false},
+                  {\"name\": \"Message\", \"value\": \"${{ github.event.head_commit.message }}\", \"inline\": false}
+                ],
+                \"timestamp\": \"$(date -u +%Y-%m-%dT%H:%M:%SZ)\"
+              }]
+            }" \
+            "${{ secrets.DISCORD_WEBHOOK }}"
