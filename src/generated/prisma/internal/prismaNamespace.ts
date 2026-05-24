@@ -1414,6 +1414,7 @@ export const MemorialScalarFieldEnum = {
   id: 'id',
   slug: 'slug',
   name: 'name',
+  category: 'category',
   countryId: 'countryId',
   occupation: 'occupation',
   remembrance: 'remembrance',

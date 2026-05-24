@@ -7,6 +7,9 @@ import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from './modules/auth/auth.module';
 import { UserModule } from './modules/user/user.module';
 import { OrganizationModule } from './modules/organization/organization.module';
+import { MemorialModule } from './modules/memorial/memorial.module';
+import { StorageModule } from './modules/storage/storage.module';
+import { AdminModule } from './modules/admin/admin.module';
 
 @Module({
   imports: [
@@ -25,6 +28,9 @@ import { OrganizationModule } from './modules/organization/organization.module';
     AuthModule,
     UserModule,
     OrganizationModule,
+    MemorialModule,
+    StorageModule,
+    AdminModule,
   ],
   controllers: [AppController],
   providers: [AppService],

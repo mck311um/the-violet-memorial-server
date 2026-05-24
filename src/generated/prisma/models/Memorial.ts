@@ -28,6 +28,7 @@ export type MemorialMinAggregateOutputType = {
   id: string | null
   slug: string | null
   name: string | null
+  category: string | null
   countryId: string | null
   occupation: string | null
   remembrance: string | null
@@ -44,6 +45,7 @@ export type MemorialMaxAggregateOutputType = {
   id: string | null
   slug: string | null
   name: string | null
+  category: string | null
   countryId: string | null
   occupation: string | null
   remembrance: string | null
@@ -60,6 +62,7 @@ export type MemorialCountAggregateOutputType = {
   id: number
   slug: number
   name: number
+  category: number
   countryId: number
   occupation: number
   remembrance: number
@@ -78,6 +81,7 @@ export type MemorialMinAggregateInputType = {
   id?: true
   slug?: true
   name?: true
+  category?: true
   countryId?: true
   occupation?: true
   remembrance?: true
@@ -94,6 +98,7 @@ export type MemorialMaxAggregateInputType = {
   id?: true
   slug?: true
   name?: true
+  category?: true
   countryId?: true
   occupation?: true
   remembrance?: true
@@ -110,6 +115,7 @@ export type MemorialCountAggregateInputType = {
   id?: true
   slug?: true
   name?: true
+  category?: true
   countryId?: true
   occupation?: true
   remembrance?: true
@@ -199,6 +205,7 @@ export type MemorialGroupByOutputType = {
   id: string
   slug: string
   name: string
+  category: string
   countryId: string
   occupation: string
   remembrance: string
@@ -236,6 +243,7 @@ export type MemorialWhereInput = {
   id?: Prisma.StringFilter<"Memorial"> | string
   slug?: Prisma.StringFilter<"Memorial"> | string
   name?: Prisma.StringFilter<"Memorial"> | string
+  category?: Prisma.StringFilter<"Memorial"> | string
   countryId?: Prisma.StringFilter<"Memorial"> | string
   occupation?: Prisma.StringFilter<"Memorial"> | string
   remembrance?: Prisma.StringFilter<"Memorial"> | string
@@ -255,6 +263,7 @@ export type MemorialOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   slug?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  category?: Prisma.SortOrder
   countryId?: Prisma.SortOrder
   occupation?: Prisma.SortOrder
   remembrance?: Prisma.SortOrder
@@ -277,6 +286,7 @@ export type MemorialWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.MemorialWhereInput[]
   NOT?: Prisma.MemorialWhereInput | Prisma.MemorialWhereInput[]
   name?: Prisma.StringFilter<"Memorial"> | string
+  category?: Prisma.StringFilter<"Memorial"> | string
   countryId?: Prisma.StringFilter<"Memorial"> | string
   occupation?: Prisma.StringFilter<"Memorial"> | string
   remembrance?: Prisma.StringFilter<"Memorial"> | string
@@ -296,6 +306,7 @@ export type MemorialOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   slug?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  category?: Prisma.SortOrder
   countryId?: Prisma.SortOrder
   occupation?: Prisma.SortOrder
   remembrance?: Prisma.SortOrder
@@ -318,6 +329,7 @@ export type MemorialScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"Memorial"> | string
   slug?: Prisma.StringWithAggregatesFilter<"Memorial"> | string
   name?: Prisma.StringWithAggregatesFilter<"Memorial"> | string
+  category?: Prisma.StringWithAggregatesFilter<"Memorial"> | string
   countryId?: Prisma.StringWithAggregatesFilter<"Memorial"> | string
   occupation?: Prisma.StringWithAggregatesFilter<"Memorial"> | string
   remembrance?: Prisma.StringWithAggregatesFilter<"Memorial"> | string
@@ -334,6 +346,7 @@ export type MemorialCreateInput = {
   id?: string
   slug: string
   name: string
+  category: string
   countryId: string
   occupation: string
   remembrance: string
@@ -352,6 +365,7 @@ export type MemorialUncheckedCreateInput = {
   id?: string
   slug: string
   name: string
+  category: string
   countryId: string
   occupation: string
   remembrance: string
@@ -370,6 +384,7 @@ export type MemorialUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
   countryId?: Prisma.StringFieldUpdateOperationsInput | string
   occupation?: Prisma.StringFieldUpdateOperationsInput | string
   remembrance?: Prisma.StringFieldUpdateOperationsInput | string
@@ -388,6 +403,7 @@ export type MemorialUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
   countryId?: Prisma.StringFieldUpdateOperationsInput | string
   occupation?: Prisma.StringFieldUpdateOperationsInput | string
   remembrance?: Prisma.StringFieldUpdateOperationsInput | string
@@ -406,6 +422,7 @@ export type MemorialCreateManyInput = {
   id?: string
   slug: string
   name: string
+  category: string
   countryId: string
   occupation: string
   remembrance: string
@@ -422,6 +439,7 @@ export type MemorialUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
   countryId?: Prisma.StringFieldUpdateOperationsInput | string
   occupation?: Prisma.StringFieldUpdateOperationsInput | string
   remembrance?: Prisma.StringFieldUpdateOperationsInput | string
@@ -437,6 +455,7 @@ export type MemorialUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
   countryId?: Prisma.StringFieldUpdateOperationsInput | string
   occupation?: Prisma.StringFieldUpdateOperationsInput | string
   remembrance?: Prisma.StringFieldUpdateOperationsInput | string
@@ -453,6 +472,7 @@ export type MemorialCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   slug?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  category?: Prisma.SortOrder
   countryId?: Prisma.SortOrder
   occupation?: Prisma.SortOrder
   remembrance?: Prisma.SortOrder
@@ -469,6 +489,7 @@ export type MemorialMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   slug?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  category?: Prisma.SortOrder
   countryId?: Prisma.SortOrder
   occupation?: Prisma.SortOrder
   remembrance?: Prisma.SortOrder
@@ -485,6 +506,7 @@ export type MemorialMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   slug?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  category?: Prisma.SortOrder
   countryId?: Prisma.SortOrder
   occupation?: Prisma.SortOrder
   remembrance?: Prisma.SortOrder
@@ -629,6 +651,7 @@ export type MemorialCreateWithoutImagesInput = {
   id?: string
   slug: string
   name: string
+  category: string
   countryId: string
   occupation: string
   remembrance: string
@@ -646,6 +669,7 @@ export type MemorialUncheckedCreateWithoutImagesInput = {
   id?: string
   slug: string
   name: string
+  category: string
   countryId: string
   occupation: string
   remembrance: string
@@ -687,6 +711,7 @@ export type MemorialScalarWhereInput = {
   id?: Prisma.StringFilter<"Memorial"> | string
   slug?: Prisma.StringFilter<"Memorial"> | string
   name?: Prisma.StringFilter<"Memorial"> | string
+  category?: Prisma.StringFilter<"Memorial"> | string
   countryId?: Prisma.StringFilter<"Memorial"> | string
   occupation?: Prisma.StringFilter<"Memorial"> | string
   remembrance?: Prisma.StringFilter<"Memorial"> | string
@@ -703,6 +728,7 @@ export type MemorialCreateWithoutTimelineInput = {
   id?: string
   slug: string
   name: string
+  category: string
   countryId: string
   occupation: string
   remembrance: string
@@ -720,6 +746,7 @@ export type MemorialUncheckedCreateWithoutTimelineInput = {
   id?: string
   slug: string
   name: string
+  category: string
   countryId: string
   occupation: string
   remembrance: string
@@ -758,6 +785,7 @@ export type MemorialCreateWithoutCreatedByUserInput = {
   id?: string
   slug: string
   name: string
+  category: string
   countryId: string
   occupation: string
   remembrance: string
@@ -775,6 +803,7 @@ export type MemorialUncheckedCreateWithoutCreatedByUserInput = {
   id?: string
   slug: string
   name: string
+  category: string
   countryId: string
   occupation: string
   remembrance: string
@@ -818,6 +847,7 @@ export type MemorialUpdateWithoutImagesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
   countryId?: Prisma.StringFieldUpdateOperationsInput | string
   occupation?: Prisma.StringFieldUpdateOperationsInput | string
   remembrance?: Prisma.StringFieldUpdateOperationsInput | string
@@ -835,6 +865,7 @@ export type MemorialUncheckedUpdateWithoutImagesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
   countryId?: Prisma.StringFieldUpdateOperationsInput | string
   occupation?: Prisma.StringFieldUpdateOperationsInput | string
   remembrance?: Prisma.StringFieldUpdateOperationsInput | string
@@ -852,6 +883,7 @@ export type MemorialUncheckedUpdateManyWithoutImagesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
   countryId?: Prisma.StringFieldUpdateOperationsInput | string
   occupation?: Prisma.StringFieldUpdateOperationsInput | string
   remembrance?: Prisma.StringFieldUpdateOperationsInput | string
@@ -868,6 +900,7 @@ export type MemorialUpdateWithoutTimelineInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
   countryId?: Prisma.StringFieldUpdateOperationsInput | string
   occupation?: Prisma.StringFieldUpdateOperationsInput | string
   remembrance?: Prisma.StringFieldUpdateOperationsInput | string
@@ -885,6 +918,7 @@ export type MemorialUncheckedUpdateWithoutTimelineInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
   countryId?: Prisma.StringFieldUpdateOperationsInput | string
   occupation?: Prisma.StringFieldUpdateOperationsInput | string
   remembrance?: Prisma.StringFieldUpdateOperationsInput | string
@@ -902,6 +936,7 @@ export type MemorialUncheckedUpdateManyWithoutTimelineInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
   countryId?: Prisma.StringFieldUpdateOperationsInput | string
   occupation?: Prisma.StringFieldUpdateOperationsInput | string
   remembrance?: Prisma.StringFieldUpdateOperationsInput | string
@@ -918,6 +953,7 @@ export type MemorialCreateManyCreatedByUserInput = {
   id?: string
   slug: string
   name: string
+  category: string
   countryId: string
   occupation: string
   remembrance: string
@@ -933,6 +969,7 @@ export type MemorialUpdateWithoutCreatedByUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
   countryId?: Prisma.StringFieldUpdateOperationsInput | string
   occupation?: Prisma.StringFieldUpdateOperationsInput | string
   remembrance?: Prisma.StringFieldUpdateOperationsInput | string
@@ -950,6 +987,7 @@ export type MemorialUncheckedUpdateWithoutCreatedByUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
   countryId?: Prisma.StringFieldUpdateOperationsInput | string
   occupation?: Prisma.StringFieldUpdateOperationsInput | string
   remembrance?: Prisma.StringFieldUpdateOperationsInput | string
@@ -967,6 +1005,7 @@ export type MemorialUncheckedUpdateManyWithoutCreatedByUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
   countryId?: Prisma.StringFieldUpdateOperationsInput | string
   occupation?: Prisma.StringFieldUpdateOperationsInput | string
   remembrance?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1022,6 +1061,7 @@ export type MemorialSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   id?: boolean
   slug?: boolean
   name?: boolean
+  category?: boolean
   countryId?: boolean
   occupation?: boolean
   remembrance?: boolean
@@ -1042,6 +1082,7 @@ export type MemorialSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
   id?: boolean
   slug?: boolean
   name?: boolean
+  category?: boolean
   countryId?: boolean
   occupation?: boolean
   remembrance?: boolean
@@ -1059,6 +1100,7 @@ export type MemorialSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
   id?: boolean
   slug?: boolean
   name?: boolean
+  category?: boolean
   countryId?: boolean
   occupation?: boolean
   remembrance?: boolean
@@ -1076,6 +1118,7 @@ export type MemorialSelectScalar = {
   id?: boolean
   slug?: boolean
   name?: boolean
+  category?: boolean
   countryId?: boolean
   occupation?: boolean
   remembrance?: boolean
@@ -1088,7 +1131,7 @@ export type MemorialSelectScalar = {
   createdBy?: boolean
 }
 
-export type MemorialOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "slug" | "name" | "countryId" | "occupation" | "remembrance" | "potraitUrl" | "dateOfBirth" | "dateOfDeath" | "about" | "createdAt" | "updatedAt" | "createdBy", ExtArgs["result"]["memorial"]>
+export type MemorialOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "slug" | "name" | "category" | "countryId" | "occupation" | "remembrance" | "potraitUrl" | "dateOfBirth" | "dateOfDeath" | "about" | "createdAt" | "updatedAt" | "createdBy", ExtArgs["result"]["memorial"]>
 export type MemorialInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   createdByUser?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   images?: boolean | Prisma.Memorial$imagesArgs<ExtArgs>
@@ -1113,6 +1156,7 @@ export type $MemorialPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     id: string
     slug: string
     name: string
+    category: string
     countryId: string
     occupation: string
     remembrance: string
@@ -1552,6 +1596,7 @@ export interface MemorialFieldRefs {
   readonly id: Prisma.FieldRef<"Memorial", 'String'>
   readonly slug: Prisma.FieldRef<"Memorial", 'String'>
   readonly name: Prisma.FieldRef<"Memorial", 'String'>
+  readonly category: Prisma.FieldRef<"Memorial", 'String'>
   readonly countryId: Prisma.FieldRef<"Memorial", 'String'>
   readonly occupation: Prisma.FieldRef<"Memorial", 'String'>
   readonly remembrance: Prisma.FieldRef<"Memorial", 'String'>
