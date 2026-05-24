@@ -10,6 +10,7 @@ import { OrganizationModule } from './modules/organization/organization.module';
 import { MemorialModule } from './modules/memorial/memorial.module';
 import { StorageModule } from './modules/storage/storage.module';
 import { AdminModule } from './modules/admin/admin.module';
+import { HealthModule } from './modules/health/health.module';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { AdminModule } from './modules/admin/admin.module';
     MemorialModule,
     StorageModule,
     AdminModule,
+    HealthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
