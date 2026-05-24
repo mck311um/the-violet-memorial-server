@@ -2,8 +2,7 @@ import { BadRequestException, Injectable, Logger } from '@nestjs/common';
 import { AwsService } from '../../common/aws/aws.service';
 import { UploadFileDto } from './dto/upload-file.dto';
 import { DeleteObjectCommand, PutObjectCommand } from '@aws-sdk/client-s3';
-import { v4 as uuidv4 } from 'uuid';
-import path from 'path';
+import { randomUUID } from 'crypto';
 
 @Injectable()
 export class StorageService {
@@ -17,7 +16,7 @@ export class StorageService {
         throw new BadRequestException('No file provided');
       }
 
-      const fileId = uuidv4();
+      const fileId = randomUUID();
       const baseName = data.fileName || fileId;
       const fileName = `${baseName}`;
       const folderPath = data.folderPath || 'default';
