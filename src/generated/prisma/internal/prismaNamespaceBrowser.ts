@@ -58,6 +58,7 @@ export const ModelName = {
   PasswordHistory: 'PasswordHistory',
   Otp: 'Otp',
   Memorial: 'Memorial',
+  MemorialSuggestion: 'MemorialSuggestion',
   Flames: 'Flames',
   TimelineEntry: 'TimelineEntry',
   Memory: 'Memory',
@@ -169,6 +170,16 @@ export const MemorialScalarFieldEnum = {
 } as const
 
 export type MemorialScalarFieldEnum = (typeof MemorialScalarFieldEnum)[keyof typeof MemorialScalarFieldEnum]
+
+
+export const MemorialSuggestionScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  country: 'country',
+  message: 'message'
+} as const
+
+export type MemorialSuggestionScalarFieldEnum = (typeof MemorialSuggestionScalarFieldEnum)[keyof typeof MemorialSuggestionScalarFieldEnum]
 
 
 export const FlamesScalarFieldEnum = {

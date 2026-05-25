@@ -53,6 +53,11 @@ export type Otp = Prisma.OtpModel
  */
 export type Memorial = Prisma.MemorialModel
 /**
+ * Model MemorialSuggestion
+ * 
+ */
+export type MemorialSuggestion = Prisma.MemorialSuggestionModel
+/**
  * Model Flames
  * 
  */

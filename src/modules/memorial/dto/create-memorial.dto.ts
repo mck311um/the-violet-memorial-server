@@ -31,3 +31,14 @@ export class CreateMemorialDto {
   @IsString()
   potraitUrl: string = '';
 }
+
+export class CreateMemorialSuggestionDto {
+  @IsString()
+  name: string = '';
+
+  @IsString()
+  country: string = '';
+
+  @IsString()
+  message: string = '';
+}

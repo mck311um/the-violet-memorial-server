@@ -25,6 +25,13 @@ model Memorial {
 
 }
 
+model MemorialSuggestion {
+    id          String   @id @default(dbgenerated("gen_random_uuid()"))
+    name        String
+    country     String
+    message     String
+}
+
 model Flames {
     id          String   @id @default(dbgenerated("gen_random_uuid()"))
     ipAddress   String   @unique

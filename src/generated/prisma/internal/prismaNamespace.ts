@@ -391,6 +391,7 @@ export const ModelName = {
   PasswordHistory: 'PasswordHistory',
   Otp: 'Otp',
   Memorial: 'Memorial',
+  MemorialSuggestion: 'MemorialSuggestion',
   Flames: 'Flames',
   TimelineEntry: 'TimelineEntry',
   Memory: 'Memory',
@@ -413,7 +414,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "country" | "auditLog" | "session" | "userCredential" | "passwordHistory" | "otp" | "memorial" | "flames" | "timelineEntry" | "memory" | "correction" | "resource" | "user" | "organization"
+    modelProps: "country" | "auditLog" | "session" | "userCredential" | "passwordHistory" | "otp" | "memorial" | "memorialSuggestion" | "flames" | "timelineEntry" | "memory" | "correction" | "resource" | "user" | "organization"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -932,6 +933,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.MemorialCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.MemorialCountAggregateOutputType> | number
+        }
+      }
+    }
+    MemorialSuggestion: {
+      payload: Prisma.$MemorialSuggestionPayload<ExtArgs>
+      fields: Prisma.MemorialSuggestionFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.MemorialSuggestionFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MemorialSuggestionPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.MemorialSuggestionFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MemorialSuggestionPayload>
+        }
+        findFirst: {
+          args: Prisma.MemorialSuggestionFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MemorialSuggestionPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.MemorialSuggestionFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MemorialSuggestionPayload>
+        }
+        findMany: {
+          args: Prisma.MemorialSuggestionFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MemorialSuggestionPayload>[]
+        }
+        create: {
+          args: Prisma.MemorialSuggestionCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MemorialSuggestionPayload>
+        }
+        createMany: {
+          args: Prisma.MemorialSuggestionCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.MemorialSuggestionCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MemorialSuggestionPayload>[]
+        }
+        delete: {
+          args: Prisma.MemorialSuggestionDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MemorialSuggestionPayload>
+        }
+        update: {
+          args: Prisma.MemorialSuggestionUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MemorialSuggestionPayload>
+        }
+        deleteMany: {
+          args: Prisma.MemorialSuggestionDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.MemorialSuggestionUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.MemorialSuggestionUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MemorialSuggestionPayload>[]
+        }
+        upsert: {
+          args: Prisma.MemorialSuggestionUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MemorialSuggestionPayload>
+        }
+        aggregate: {
+          args: Prisma.MemorialSuggestionAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateMemorialSuggestion>
+        }
+        groupBy: {
+          args: Prisma.MemorialSuggestionGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MemorialSuggestionGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.MemorialSuggestionCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MemorialSuggestionCountAggregateOutputType> | number
         }
       }
     }
@@ -1580,6 +1655,16 @@ export const MemorialScalarFieldEnum = {
 export type MemorialScalarFieldEnum = (typeof MemorialScalarFieldEnum)[keyof typeof MemorialScalarFieldEnum]
 
 
+export const MemorialSuggestionScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  country: 'country',
+  message: 'message'
+} as const
+
+export type MemorialSuggestionScalarFieldEnum = (typeof MemorialSuggestionScalarFieldEnum)[keyof typeof MemorialSuggestionScalarFieldEnum]
+
+
 export const FlamesScalarFieldEnum = {
   id: 'id',
   ipAddress: 'ipAddress',
@@ -1982,6 +2067,7 @@ export type GlobalOmitConfig = {
   passwordHistory?: Prisma.PasswordHistoryOmit
   otp?: Prisma.OtpOmit
   memorial?: Prisma.MemorialOmit
+  memorialSuggestion?: Prisma.MemorialSuggestionOmit
   flames?: Prisma.FlamesOmit
   timelineEntry?: Prisma.TimelineEntryOmit
   memory?: Prisma.MemoryOmit

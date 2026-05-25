@@ -1,6 +1,9 @@
 import { Injectable, Logger, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '../../prisma/prisma.service';
-import { CreateMemorialDto } from './dto/create-memorial.dto';
+import {
+  CreateMemorialDto,
+  CreateMemorialSuggestionDto,
+} from './dto/create-memorial.dto';
 import { TimelineService } from './service/timeline.service';
 import { NotFoundError } from 'rxjs';
 import { CreateMemoryDto } from './dto/create-memory.dto';
@@ -154,6 +157,26 @@ export class MemorialService {
 
   async submitCorrection(data: CreateCorrectionDto) {
     return this.correctionService.createCorrection(data);
+  }
+
+  async createMemorialSuggestion(data: CreateMemorialSuggestionDto) {
+    try {
+      const suggestion = await this.prisma.memorialSuggestion.create({
+        data: {
+          name: data.name,
+          country: data.country,
+          message: data.message,
+        },
+      });
+
+      return {
+        message: 'Memory suggestion created successfully',
+        suggestion,
+      };
+    } catch (error: any) {
+      this.logger.error(error.message, error.stack);
+      throw error;
+    }
   }
 
   private generateSlug(name: string): string {

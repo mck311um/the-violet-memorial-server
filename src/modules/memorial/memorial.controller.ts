@@ -8,7 +8,10 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { MemorialService } from './memorial.service';
-import { CreateMemorialDto } from './dto/create-memorial.dto';
+import {
+  CreateMemorialDto,
+  CreateMemorialSuggestionDto,
+} from './dto/create-memorial.dto';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { ApiGuard } from '../auth/guards/api.guard';
 import { CreateMemoryDto } from './dto/create-memory.dto';
@@ -62,6 +65,12 @@ export class MemorialController {
     const id = req.user.id;
 
     return this.memorialService.createMemorial(body, id);
+  }
+
+  @Post('suggestion')
+  @UseGuards(ApiGuard)
+  async createMemorialSuggestion(@Body() body: CreateMemorialSuggestionDto) {
+    return this.memorialService.createMemorialSuggestion(body);
   }
 
   @Post('correction')
