@@ -5,6 +5,8 @@ import { TimelineService } from './service/timeline.service';
 import { NotFoundError } from 'rxjs';
 import { CreateMemoryDto } from './dto/create-memory.dto';
 import { MemoryService } from './service/memory.service';
+import { CorrectionService } from './service/correction.service';
+import { CreateCorrectionDto } from './dto/correction.dto';
 
 @Injectable()
 export class MemorialService {
@@ -14,6 +16,7 @@ export class MemorialService {
     private readonly prisma: PrismaService,
     private readonly timelineService: TimelineService,
     private readonly memoryService: MemoryService,
+    private readonly correctionService: CorrectionService,
   ) {}
 
   async getFlameCount() {
@@ -42,7 +45,6 @@ export class MemorialService {
         include: {
           country: true,
           timeline: true,
-          images: true,
           memories: { where: { status: { not: 'REJECTED' } } },
         },
       });
@@ -60,7 +62,6 @@ export class MemorialService {
         include: {
           country: true,
           timeline: true,
-          images: true,
           memories: { where: { status: { not: 'REJECTED' } } },
         },
       });
@@ -125,33 +126,34 @@ export class MemorialService {
     return this.memoryService.createMemory(data);
   }
 
-  async lightFlame(memorialId: string, ipAddress: string) {
+  async lightFlame(ipAddress: string) {
     try {
       const existingFlame = await this.prisma.flames.findFirst({
         where: {
-          memorialId,
           ipAddress,
         },
       });
 
       if (existingFlame) {
-        this.logger.warn(
-          `IP address ${ipAddress} has already lit a flame for memorial ${memorialId}`,
-        );
+        this.logger.warn(`IP address ${ipAddress} has already lit a flame`);
         return this.getFlameCount();
       }
 
-      const flame = await this.prisma.flames.create({
+      await this.prisma.flames.create({
         data: {
-          memorialId,
           ipAddress,
         },
       });
-      return this.getFlameCount();
+
+      return await this.getFlameCount();
     } catch (error: any) {
       this.logger.error(error.message, error.stack);
       throw error;
     }
+  }
+
+  async submitCorrection(data: CreateCorrectionDto) {
+    return this.correctionService.createCorrection(data);
   }
 
   private generateSlug(name: string): string {

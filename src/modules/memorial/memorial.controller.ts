@@ -12,6 +12,7 @@ import { CreateMemorialDto } from './dto/create-memorial.dto';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { ApiGuard } from '../auth/guards/api.guard';
 import { CreateMemoryDto } from './dto/create-memory.dto';
+import { CreateCorrectionDto } from './dto/correction.dto';
 
 @Controller('memorial')
 export class MemorialController {
@@ -29,11 +30,11 @@ export class MemorialController {
     return this.memorialService.getFlameCount();
   }
 
-  @Post('flame/light/:memorialId')
+  @Post('flame/light')
   @UseGuards(ApiGuard)
-  async lightFlame(@Param('memorialId') memorialId: string, @Request() req) {
+  async lightFlame(@Request() req) {
     const ip = req.ip || req.connection?.remoteAddress;
-    return this.memorialService.lightFlame(memorialId, ip);
+    return this.memorialService.lightFlame(ip);
   }
 
   @Post('memory')
@@ -61,5 +62,11 @@ export class MemorialController {
     const id = req.user.id;
 
     return this.memorialService.createMemorial(body, id);
+  }
+
+  @Post('correction')
+  @UseGuards(ApiGuard)
+  async submitCorrection(@Body() body: CreateCorrectionDto) {
+    return this.memorialService.submitCorrection(body);
   }
 }

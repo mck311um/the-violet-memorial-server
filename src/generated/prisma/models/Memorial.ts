@@ -254,12 +254,12 @@ export type MemorialWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"Memorial"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Memorial"> | Date | string
   createdBy?: Prisma.StringFilter<"Memorial"> | string
-  images?: Prisma.ImageListRelationFilter
   timeline?: Prisma.TimelineEntryListRelationFilter
   memories?: Prisma.MemoryListRelationFilter
+  flames?: Prisma.FlamesListRelationFilter
+  corrections?: Prisma.CorrectionListRelationFilter
   country?: Prisma.XOR<Prisma.CountryScalarRelationFilter, Prisma.CountryWhereInput>
   createdByUser?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-  flames?: Prisma.FlamesListRelationFilter
 }
 
 export type MemorialOrderByWithRelationInput = {
@@ -277,12 +277,12 @@ export type MemorialOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   createdBy?: Prisma.SortOrder
-  images?: Prisma.ImageOrderByRelationAggregateInput
   timeline?: Prisma.TimelineEntryOrderByRelationAggregateInput
   memories?: Prisma.MemoryOrderByRelationAggregateInput
+  flames?: Prisma.FlamesOrderByRelationAggregateInput
+  corrections?: Prisma.CorrectionOrderByRelationAggregateInput
   country?: Prisma.CountryOrderByWithRelationInput
   createdByUser?: Prisma.UserOrderByWithRelationInput
-  flames?: Prisma.FlamesOrderByRelationAggregateInput
 }
 
 export type MemorialWhereUniqueInput = Prisma.AtLeast<{
@@ -303,12 +303,12 @@ export type MemorialWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"Memorial"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Memorial"> | Date | string
   createdBy?: Prisma.StringFilter<"Memorial"> | string
-  images?: Prisma.ImageListRelationFilter
   timeline?: Prisma.TimelineEntryListRelationFilter
   memories?: Prisma.MemoryListRelationFilter
+  flames?: Prisma.FlamesListRelationFilter
+  corrections?: Prisma.CorrectionListRelationFilter
   country?: Prisma.XOR<Prisma.CountryScalarRelationFilter, Prisma.CountryWhereInput>
   createdByUser?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-  flames?: Prisma.FlamesListRelationFilter
 }, "id" | "slug">
 
 export type MemorialOrderByWithAggregationInput = {
@@ -364,12 +364,12 @@ export type MemorialCreateInput = {
   about: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  images?: Prisma.ImageCreateNestedManyWithoutMemorialInput
   timeline?: Prisma.TimelineEntryCreateNestedManyWithoutMemorialInput
   memories?: Prisma.MemoryCreateNestedManyWithoutMemorialInput
+  flames?: Prisma.FlamesCreateNestedManyWithoutMemorialInput
+  corrections?: Prisma.CorrectionCreateNestedManyWithoutMemorialInput
   country: Prisma.CountryCreateNestedOneWithoutMemorialsInput
   createdByUser: Prisma.UserCreateNestedOneWithoutMemorialsInput
-  flames?: Prisma.FlamesCreateNestedManyWithoutMemorialInput
 }
 
 export type MemorialUncheckedCreateInput = {
@@ -387,10 +387,10 @@ export type MemorialUncheckedCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   createdBy: string
-  images?: Prisma.ImageUncheckedCreateNestedManyWithoutMemorialInput
   timeline?: Prisma.TimelineEntryUncheckedCreateNestedManyWithoutMemorialInput
   memories?: Prisma.MemoryUncheckedCreateNestedManyWithoutMemorialInput
   flames?: Prisma.FlamesUncheckedCreateNestedManyWithoutMemorialInput
+  corrections?: Prisma.CorrectionUncheckedCreateNestedManyWithoutMemorialInput
 }
 
 export type MemorialUpdateInput = {
@@ -406,12 +406,12 @@ export type MemorialUpdateInput = {
   about?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  images?: Prisma.ImageUpdateManyWithoutMemorialNestedInput
   timeline?: Prisma.TimelineEntryUpdateManyWithoutMemorialNestedInput
   memories?: Prisma.MemoryUpdateManyWithoutMemorialNestedInput
+  flames?: Prisma.FlamesUpdateManyWithoutMemorialNestedInput
+  corrections?: Prisma.CorrectionUpdateManyWithoutMemorialNestedInput
   country?: Prisma.CountryUpdateOneRequiredWithoutMemorialsNestedInput
   createdByUser?: Prisma.UserUpdateOneRequiredWithoutMemorialsNestedInput
-  flames?: Prisma.FlamesUpdateManyWithoutMemorialNestedInput
 }
 
 export type MemorialUncheckedUpdateInput = {
@@ -429,10 +429,10 @@ export type MemorialUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.StringFieldUpdateOperationsInput | string
-  images?: Prisma.ImageUncheckedUpdateManyWithoutMemorialNestedInput
   timeline?: Prisma.TimelineEntryUncheckedUpdateManyWithoutMemorialNestedInput
   memories?: Prisma.MemoryUncheckedUpdateManyWithoutMemorialNestedInput
   flames?: Prisma.FlamesUncheckedUpdateManyWithoutMemorialNestedInput
+  corrections?: Prisma.CorrectionUncheckedUpdateManyWithoutMemorialNestedInput
 }
 
 export type MemorialCreateManyInput = {
@@ -613,20 +613,6 @@ export type MemorialUpdateOneWithoutFlamesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.MemorialUpdateToOneWithWhereWithoutFlamesInput, Prisma.MemorialUpdateWithoutFlamesInput>, Prisma.MemorialUncheckedUpdateWithoutFlamesInput>
 }
 
-export type MemorialCreateNestedOneWithoutImagesInput = {
-  create?: Prisma.XOR<Prisma.MemorialCreateWithoutImagesInput, Prisma.MemorialUncheckedCreateWithoutImagesInput>
-  connectOrCreate?: Prisma.MemorialCreateOrConnectWithoutImagesInput
-  connect?: Prisma.MemorialWhereUniqueInput
-}
-
-export type MemorialUpdateOneRequiredWithoutImagesNestedInput = {
-  create?: Prisma.XOR<Prisma.MemorialCreateWithoutImagesInput, Prisma.MemorialUncheckedCreateWithoutImagesInput>
-  connectOrCreate?: Prisma.MemorialCreateOrConnectWithoutImagesInput
-  upsert?: Prisma.MemorialUpsertWithoutImagesInput
-  connect?: Prisma.MemorialWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.MemorialUpdateToOneWithWhereWithoutImagesInput, Prisma.MemorialUpdateWithoutImagesInput>, Prisma.MemorialUncheckedUpdateWithoutImagesInput>
-}
-
 export type MemorialCreateNestedOneWithoutTimelineInput = {
   create?: Prisma.XOR<Prisma.MemorialCreateWithoutTimelineInput, Prisma.MemorialUncheckedCreateWithoutTimelineInput>
   connectOrCreate?: Prisma.MemorialCreateOrConnectWithoutTimelineInput
@@ -653,6 +639,20 @@ export type MemorialUpdateOneRequiredWithoutMemoriesNestedInput = {
   upsert?: Prisma.MemorialUpsertWithoutMemoriesInput
   connect?: Prisma.MemorialWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.MemorialUpdateToOneWithWhereWithoutMemoriesInput, Prisma.MemorialUpdateWithoutMemoriesInput>, Prisma.MemorialUncheckedUpdateWithoutMemoriesInput>
+}
+
+export type MemorialCreateNestedOneWithoutCorrectionsInput = {
+  create?: Prisma.XOR<Prisma.MemorialCreateWithoutCorrectionsInput, Prisma.MemorialUncheckedCreateWithoutCorrectionsInput>
+  connectOrCreate?: Prisma.MemorialCreateOrConnectWithoutCorrectionsInput
+  connect?: Prisma.MemorialWhereUniqueInput
+}
+
+export type MemorialUpdateOneRequiredWithoutCorrectionsNestedInput = {
+  create?: Prisma.XOR<Prisma.MemorialCreateWithoutCorrectionsInput, Prisma.MemorialUncheckedCreateWithoutCorrectionsInput>
+  connectOrCreate?: Prisma.MemorialCreateOrConnectWithoutCorrectionsInput
+  upsert?: Prisma.MemorialUpsertWithoutCorrectionsInput
+  connect?: Prisma.MemorialWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.MemorialUpdateToOneWithWhereWithoutCorrectionsInput, Prisma.MemorialUpdateWithoutCorrectionsInput>, Prisma.MemorialUncheckedUpdateWithoutCorrectionsInput>
 }
 
 export type MemorialCreateNestedManyWithoutCreatedByUserInput = {
@@ -710,11 +710,11 @@ export type MemorialCreateWithoutCountryInput = {
   about: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  images?: Prisma.ImageCreateNestedManyWithoutMemorialInput
   timeline?: Prisma.TimelineEntryCreateNestedManyWithoutMemorialInput
   memories?: Prisma.MemoryCreateNestedManyWithoutMemorialInput
-  createdByUser: Prisma.UserCreateNestedOneWithoutMemorialsInput
   flames?: Prisma.FlamesCreateNestedManyWithoutMemorialInput
+  corrections?: Prisma.CorrectionCreateNestedManyWithoutMemorialInput
+  createdByUser: Prisma.UserCreateNestedOneWithoutMemorialsInput
 }
 
 export type MemorialUncheckedCreateWithoutCountryInput = {
@@ -731,10 +731,10 @@ export type MemorialUncheckedCreateWithoutCountryInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   createdBy: string
-  images?: Prisma.ImageUncheckedCreateNestedManyWithoutMemorialInput
   timeline?: Prisma.TimelineEntryUncheckedCreateNestedManyWithoutMemorialInput
   memories?: Prisma.MemoryUncheckedCreateNestedManyWithoutMemorialInput
   flames?: Prisma.FlamesUncheckedCreateNestedManyWithoutMemorialInput
+  corrections?: Prisma.CorrectionUncheckedCreateNestedManyWithoutMemorialInput
 }
 
 export type MemorialCreateOrConnectWithoutCountryInput = {
@@ -796,9 +796,9 @@ export type MemorialCreateWithoutFlamesInput = {
   about: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  images?: Prisma.ImageCreateNestedManyWithoutMemorialInput
   timeline?: Prisma.TimelineEntryCreateNestedManyWithoutMemorialInput
   memories?: Prisma.MemoryCreateNestedManyWithoutMemorialInput
+  corrections?: Prisma.CorrectionCreateNestedManyWithoutMemorialInput
   country: Prisma.CountryCreateNestedOneWithoutMemorialsInput
   createdByUser: Prisma.UserCreateNestedOneWithoutMemorialsInput
 }
@@ -818,9 +818,9 @@ export type MemorialUncheckedCreateWithoutFlamesInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   createdBy: string
-  images?: Prisma.ImageUncheckedCreateNestedManyWithoutMemorialInput
   timeline?: Prisma.TimelineEntryUncheckedCreateNestedManyWithoutMemorialInput
   memories?: Prisma.MemoryUncheckedCreateNestedManyWithoutMemorialInput
+  corrections?: Prisma.CorrectionUncheckedCreateNestedManyWithoutMemorialInput
 }
 
 export type MemorialCreateOrConnectWithoutFlamesInput = {
@@ -852,9 +852,9 @@ export type MemorialUpdateWithoutFlamesInput = {
   about?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  images?: Prisma.ImageUpdateManyWithoutMemorialNestedInput
   timeline?: Prisma.TimelineEntryUpdateManyWithoutMemorialNestedInput
   memories?: Prisma.MemoryUpdateManyWithoutMemorialNestedInput
+  corrections?: Prisma.CorrectionUpdateManyWithoutMemorialNestedInput
   country?: Prisma.CountryUpdateOneRequiredWithoutMemorialsNestedInput
   createdByUser?: Prisma.UserUpdateOneRequiredWithoutMemorialsNestedInput
 }
@@ -874,105 +874,9 @@ export type MemorialUncheckedUpdateWithoutFlamesInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.StringFieldUpdateOperationsInput | string
-  images?: Prisma.ImageUncheckedUpdateManyWithoutMemorialNestedInput
   timeline?: Prisma.TimelineEntryUncheckedUpdateManyWithoutMemorialNestedInput
   memories?: Prisma.MemoryUncheckedUpdateManyWithoutMemorialNestedInput
-}
-
-export type MemorialCreateWithoutImagesInput = {
-  id?: string
-  slug: string
-  name: string
-  category: string
-  occupation: string
-  remembrance: string
-  potraitUrl: string
-  dateOfBirth: Date | string
-  dateOfDeath: Date | string
-  about: string
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  timeline?: Prisma.TimelineEntryCreateNestedManyWithoutMemorialInput
-  memories?: Prisma.MemoryCreateNestedManyWithoutMemorialInput
-  country: Prisma.CountryCreateNestedOneWithoutMemorialsInput
-  createdByUser: Prisma.UserCreateNestedOneWithoutMemorialsInput
-  flames?: Prisma.FlamesCreateNestedManyWithoutMemorialInput
-}
-
-export type MemorialUncheckedCreateWithoutImagesInput = {
-  id?: string
-  slug: string
-  name: string
-  category: string
-  countryId: string
-  occupation: string
-  remembrance: string
-  potraitUrl: string
-  dateOfBirth: Date | string
-  dateOfDeath: Date | string
-  about: string
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  createdBy: string
-  timeline?: Prisma.TimelineEntryUncheckedCreateNestedManyWithoutMemorialInput
-  memories?: Prisma.MemoryUncheckedCreateNestedManyWithoutMemorialInput
-  flames?: Prisma.FlamesUncheckedCreateNestedManyWithoutMemorialInput
-}
-
-export type MemorialCreateOrConnectWithoutImagesInput = {
-  where: Prisma.MemorialWhereUniqueInput
-  create: Prisma.XOR<Prisma.MemorialCreateWithoutImagesInput, Prisma.MemorialUncheckedCreateWithoutImagesInput>
-}
-
-export type MemorialUpsertWithoutImagesInput = {
-  update: Prisma.XOR<Prisma.MemorialUpdateWithoutImagesInput, Prisma.MemorialUncheckedUpdateWithoutImagesInput>
-  create: Prisma.XOR<Prisma.MemorialCreateWithoutImagesInput, Prisma.MemorialUncheckedCreateWithoutImagesInput>
-  where?: Prisma.MemorialWhereInput
-}
-
-export type MemorialUpdateToOneWithWhereWithoutImagesInput = {
-  where?: Prisma.MemorialWhereInput
-  data: Prisma.XOR<Prisma.MemorialUpdateWithoutImagesInput, Prisma.MemorialUncheckedUpdateWithoutImagesInput>
-}
-
-export type MemorialUpdateWithoutImagesInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  slug?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  category?: Prisma.StringFieldUpdateOperationsInput | string
-  occupation?: Prisma.StringFieldUpdateOperationsInput | string
-  remembrance?: Prisma.StringFieldUpdateOperationsInput | string
-  potraitUrl?: Prisma.StringFieldUpdateOperationsInput | string
-  dateOfBirth?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  dateOfDeath?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  about?: Prisma.StringFieldUpdateOperationsInput | string
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  timeline?: Prisma.TimelineEntryUpdateManyWithoutMemorialNestedInput
-  memories?: Prisma.MemoryUpdateManyWithoutMemorialNestedInput
-  country?: Prisma.CountryUpdateOneRequiredWithoutMemorialsNestedInput
-  createdByUser?: Prisma.UserUpdateOneRequiredWithoutMemorialsNestedInput
-  flames?: Prisma.FlamesUpdateManyWithoutMemorialNestedInput
-}
-
-export type MemorialUncheckedUpdateWithoutImagesInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  slug?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  category?: Prisma.StringFieldUpdateOperationsInput | string
-  countryId?: Prisma.StringFieldUpdateOperationsInput | string
-  occupation?: Prisma.StringFieldUpdateOperationsInput | string
-  remembrance?: Prisma.StringFieldUpdateOperationsInput | string
-  potraitUrl?: Prisma.StringFieldUpdateOperationsInput | string
-  dateOfBirth?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  dateOfDeath?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  about?: Prisma.StringFieldUpdateOperationsInput | string
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdBy?: Prisma.StringFieldUpdateOperationsInput | string
-  timeline?: Prisma.TimelineEntryUncheckedUpdateManyWithoutMemorialNestedInput
-  memories?: Prisma.MemoryUncheckedUpdateManyWithoutMemorialNestedInput
-  flames?: Prisma.FlamesUncheckedUpdateManyWithoutMemorialNestedInput
+  corrections?: Prisma.CorrectionUncheckedUpdateManyWithoutMemorialNestedInput
 }
 
 export type MemorialCreateWithoutTimelineInput = {
@@ -988,11 +892,11 @@ export type MemorialCreateWithoutTimelineInput = {
   about: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  images?: Prisma.ImageCreateNestedManyWithoutMemorialInput
   memories?: Prisma.MemoryCreateNestedManyWithoutMemorialInput
+  flames?: Prisma.FlamesCreateNestedManyWithoutMemorialInput
+  corrections?: Prisma.CorrectionCreateNestedManyWithoutMemorialInput
   country: Prisma.CountryCreateNestedOneWithoutMemorialsInput
   createdByUser: Prisma.UserCreateNestedOneWithoutMemorialsInput
-  flames?: Prisma.FlamesCreateNestedManyWithoutMemorialInput
 }
 
 export type MemorialUncheckedCreateWithoutTimelineInput = {
@@ -1010,9 +914,9 @@ export type MemorialUncheckedCreateWithoutTimelineInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   createdBy: string
-  images?: Prisma.ImageUncheckedCreateNestedManyWithoutMemorialInput
   memories?: Prisma.MemoryUncheckedCreateNestedManyWithoutMemorialInput
   flames?: Prisma.FlamesUncheckedCreateNestedManyWithoutMemorialInput
+  corrections?: Prisma.CorrectionUncheckedCreateNestedManyWithoutMemorialInput
 }
 
 export type MemorialCreateOrConnectWithoutTimelineInput = {
@@ -1044,11 +948,11 @@ export type MemorialUpdateWithoutTimelineInput = {
   about?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  images?: Prisma.ImageUpdateManyWithoutMemorialNestedInput
   memories?: Prisma.MemoryUpdateManyWithoutMemorialNestedInput
+  flames?: Prisma.FlamesUpdateManyWithoutMemorialNestedInput
+  corrections?: Prisma.CorrectionUpdateManyWithoutMemorialNestedInput
   country?: Prisma.CountryUpdateOneRequiredWithoutMemorialsNestedInput
   createdByUser?: Prisma.UserUpdateOneRequiredWithoutMemorialsNestedInput
-  flames?: Prisma.FlamesUpdateManyWithoutMemorialNestedInput
 }
 
 export type MemorialUncheckedUpdateWithoutTimelineInput = {
@@ -1066,9 +970,9 @@ export type MemorialUncheckedUpdateWithoutTimelineInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.StringFieldUpdateOperationsInput | string
-  images?: Prisma.ImageUncheckedUpdateManyWithoutMemorialNestedInput
   memories?: Prisma.MemoryUncheckedUpdateManyWithoutMemorialNestedInput
   flames?: Prisma.FlamesUncheckedUpdateManyWithoutMemorialNestedInput
+  corrections?: Prisma.CorrectionUncheckedUpdateManyWithoutMemorialNestedInput
 }
 
 export type MemorialCreateWithoutMemoriesInput = {
@@ -1084,11 +988,11 @@ export type MemorialCreateWithoutMemoriesInput = {
   about: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  images?: Prisma.ImageCreateNestedManyWithoutMemorialInput
   timeline?: Prisma.TimelineEntryCreateNestedManyWithoutMemorialInput
+  flames?: Prisma.FlamesCreateNestedManyWithoutMemorialInput
+  corrections?: Prisma.CorrectionCreateNestedManyWithoutMemorialInput
   country: Prisma.CountryCreateNestedOneWithoutMemorialsInput
   createdByUser: Prisma.UserCreateNestedOneWithoutMemorialsInput
-  flames?: Prisma.FlamesCreateNestedManyWithoutMemorialInput
 }
 
 export type MemorialUncheckedCreateWithoutMemoriesInput = {
@@ -1106,9 +1010,9 @@ export type MemorialUncheckedCreateWithoutMemoriesInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   createdBy: string
-  images?: Prisma.ImageUncheckedCreateNestedManyWithoutMemorialInput
   timeline?: Prisma.TimelineEntryUncheckedCreateNestedManyWithoutMemorialInput
   flames?: Prisma.FlamesUncheckedCreateNestedManyWithoutMemorialInput
+  corrections?: Prisma.CorrectionUncheckedCreateNestedManyWithoutMemorialInput
 }
 
 export type MemorialCreateOrConnectWithoutMemoriesInput = {
@@ -1140,11 +1044,11 @@ export type MemorialUpdateWithoutMemoriesInput = {
   about?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  images?: Prisma.ImageUpdateManyWithoutMemorialNestedInput
   timeline?: Prisma.TimelineEntryUpdateManyWithoutMemorialNestedInput
+  flames?: Prisma.FlamesUpdateManyWithoutMemorialNestedInput
+  corrections?: Prisma.CorrectionUpdateManyWithoutMemorialNestedInput
   country?: Prisma.CountryUpdateOneRequiredWithoutMemorialsNestedInput
   createdByUser?: Prisma.UserUpdateOneRequiredWithoutMemorialsNestedInput
-  flames?: Prisma.FlamesUpdateManyWithoutMemorialNestedInput
 }
 
 export type MemorialUncheckedUpdateWithoutMemoriesInput = {
@@ -1162,8 +1066,104 @@ export type MemorialUncheckedUpdateWithoutMemoriesInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.StringFieldUpdateOperationsInput | string
-  images?: Prisma.ImageUncheckedUpdateManyWithoutMemorialNestedInput
   timeline?: Prisma.TimelineEntryUncheckedUpdateManyWithoutMemorialNestedInput
+  flames?: Prisma.FlamesUncheckedUpdateManyWithoutMemorialNestedInput
+  corrections?: Prisma.CorrectionUncheckedUpdateManyWithoutMemorialNestedInput
+}
+
+export type MemorialCreateWithoutCorrectionsInput = {
+  id?: string
+  slug: string
+  name: string
+  category: string
+  occupation: string
+  remembrance: string
+  potraitUrl: string
+  dateOfBirth: Date | string
+  dateOfDeath: Date | string
+  about: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  timeline?: Prisma.TimelineEntryCreateNestedManyWithoutMemorialInput
+  memories?: Prisma.MemoryCreateNestedManyWithoutMemorialInput
+  flames?: Prisma.FlamesCreateNestedManyWithoutMemorialInput
+  country: Prisma.CountryCreateNestedOneWithoutMemorialsInput
+  createdByUser: Prisma.UserCreateNestedOneWithoutMemorialsInput
+}
+
+export type MemorialUncheckedCreateWithoutCorrectionsInput = {
+  id?: string
+  slug: string
+  name: string
+  category: string
+  countryId: string
+  occupation: string
+  remembrance: string
+  potraitUrl: string
+  dateOfBirth: Date | string
+  dateOfDeath: Date | string
+  about: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  createdBy: string
+  timeline?: Prisma.TimelineEntryUncheckedCreateNestedManyWithoutMemorialInput
+  memories?: Prisma.MemoryUncheckedCreateNestedManyWithoutMemorialInput
+  flames?: Prisma.FlamesUncheckedCreateNestedManyWithoutMemorialInput
+}
+
+export type MemorialCreateOrConnectWithoutCorrectionsInput = {
+  where: Prisma.MemorialWhereUniqueInput
+  create: Prisma.XOR<Prisma.MemorialCreateWithoutCorrectionsInput, Prisma.MemorialUncheckedCreateWithoutCorrectionsInput>
+}
+
+export type MemorialUpsertWithoutCorrectionsInput = {
+  update: Prisma.XOR<Prisma.MemorialUpdateWithoutCorrectionsInput, Prisma.MemorialUncheckedUpdateWithoutCorrectionsInput>
+  create: Prisma.XOR<Prisma.MemorialCreateWithoutCorrectionsInput, Prisma.MemorialUncheckedCreateWithoutCorrectionsInput>
+  where?: Prisma.MemorialWhereInput
+}
+
+export type MemorialUpdateToOneWithWhereWithoutCorrectionsInput = {
+  where?: Prisma.MemorialWhereInput
+  data: Prisma.XOR<Prisma.MemorialUpdateWithoutCorrectionsInput, Prisma.MemorialUncheckedUpdateWithoutCorrectionsInput>
+}
+
+export type MemorialUpdateWithoutCorrectionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
+  occupation?: Prisma.StringFieldUpdateOperationsInput | string
+  remembrance?: Prisma.StringFieldUpdateOperationsInput | string
+  potraitUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  dateOfBirth?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  dateOfDeath?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  about?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  timeline?: Prisma.TimelineEntryUpdateManyWithoutMemorialNestedInput
+  memories?: Prisma.MemoryUpdateManyWithoutMemorialNestedInput
+  flames?: Prisma.FlamesUpdateManyWithoutMemorialNestedInput
+  country?: Prisma.CountryUpdateOneRequiredWithoutMemorialsNestedInput
+  createdByUser?: Prisma.UserUpdateOneRequiredWithoutMemorialsNestedInput
+}
+
+export type MemorialUncheckedUpdateWithoutCorrectionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
+  countryId?: Prisma.StringFieldUpdateOperationsInput | string
+  occupation?: Prisma.StringFieldUpdateOperationsInput | string
+  remembrance?: Prisma.StringFieldUpdateOperationsInput | string
+  potraitUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  dateOfBirth?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  dateOfDeath?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  about?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdBy?: Prisma.StringFieldUpdateOperationsInput | string
+  timeline?: Prisma.TimelineEntryUncheckedUpdateManyWithoutMemorialNestedInput
+  memories?: Prisma.MemoryUncheckedUpdateManyWithoutMemorialNestedInput
   flames?: Prisma.FlamesUncheckedUpdateManyWithoutMemorialNestedInput
 }
 
@@ -1180,11 +1180,11 @@ export type MemorialCreateWithoutCreatedByUserInput = {
   about: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  images?: Prisma.ImageCreateNestedManyWithoutMemorialInput
   timeline?: Prisma.TimelineEntryCreateNestedManyWithoutMemorialInput
   memories?: Prisma.MemoryCreateNestedManyWithoutMemorialInput
-  country: Prisma.CountryCreateNestedOneWithoutMemorialsInput
   flames?: Prisma.FlamesCreateNestedManyWithoutMemorialInput
+  corrections?: Prisma.CorrectionCreateNestedManyWithoutMemorialInput
+  country: Prisma.CountryCreateNestedOneWithoutMemorialsInput
 }
 
 export type MemorialUncheckedCreateWithoutCreatedByUserInput = {
@@ -1201,10 +1201,10 @@ export type MemorialUncheckedCreateWithoutCreatedByUserInput = {
   about: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  images?: Prisma.ImageUncheckedCreateNestedManyWithoutMemorialInput
   timeline?: Prisma.TimelineEntryUncheckedCreateNestedManyWithoutMemorialInput
   memories?: Prisma.MemoryUncheckedCreateNestedManyWithoutMemorialInput
   flames?: Prisma.FlamesUncheckedCreateNestedManyWithoutMemorialInput
+  corrections?: Prisma.CorrectionUncheckedCreateNestedManyWithoutMemorialInput
 }
 
 export type MemorialCreateOrConnectWithoutCreatedByUserInput = {
@@ -1262,11 +1262,11 @@ export type MemorialUpdateWithoutCountryInput = {
   about?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  images?: Prisma.ImageUpdateManyWithoutMemorialNestedInput
   timeline?: Prisma.TimelineEntryUpdateManyWithoutMemorialNestedInput
   memories?: Prisma.MemoryUpdateManyWithoutMemorialNestedInput
-  createdByUser?: Prisma.UserUpdateOneRequiredWithoutMemorialsNestedInput
   flames?: Prisma.FlamesUpdateManyWithoutMemorialNestedInput
+  corrections?: Prisma.CorrectionUpdateManyWithoutMemorialNestedInput
+  createdByUser?: Prisma.UserUpdateOneRequiredWithoutMemorialsNestedInput
 }
 
 export type MemorialUncheckedUpdateWithoutCountryInput = {
@@ -1283,10 +1283,10 @@ export type MemorialUncheckedUpdateWithoutCountryInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.StringFieldUpdateOperationsInput | string
-  images?: Prisma.ImageUncheckedUpdateManyWithoutMemorialNestedInput
   timeline?: Prisma.TimelineEntryUncheckedUpdateManyWithoutMemorialNestedInput
   memories?: Prisma.MemoryUncheckedUpdateManyWithoutMemorialNestedInput
   flames?: Prisma.FlamesUncheckedUpdateManyWithoutMemorialNestedInput
+  corrections?: Prisma.CorrectionUncheckedUpdateManyWithoutMemorialNestedInput
 }
 
 export type MemorialUncheckedUpdateManyWithoutCountryInput = {
@@ -1334,11 +1334,11 @@ export type MemorialUpdateWithoutCreatedByUserInput = {
   about?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  images?: Prisma.ImageUpdateManyWithoutMemorialNestedInput
   timeline?: Prisma.TimelineEntryUpdateManyWithoutMemorialNestedInput
   memories?: Prisma.MemoryUpdateManyWithoutMemorialNestedInput
-  country?: Prisma.CountryUpdateOneRequiredWithoutMemorialsNestedInput
   flames?: Prisma.FlamesUpdateManyWithoutMemorialNestedInput
+  corrections?: Prisma.CorrectionUpdateManyWithoutMemorialNestedInput
+  country?: Prisma.CountryUpdateOneRequiredWithoutMemorialsNestedInput
 }
 
 export type MemorialUncheckedUpdateWithoutCreatedByUserInput = {
@@ -1355,10 +1355,10 @@ export type MemorialUncheckedUpdateWithoutCreatedByUserInput = {
   about?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  images?: Prisma.ImageUncheckedUpdateManyWithoutMemorialNestedInput
   timeline?: Prisma.TimelineEntryUncheckedUpdateManyWithoutMemorialNestedInput
   memories?: Prisma.MemoryUncheckedUpdateManyWithoutMemorialNestedInput
   flames?: Prisma.FlamesUncheckedUpdateManyWithoutMemorialNestedInput
+  corrections?: Prisma.CorrectionUncheckedUpdateManyWithoutMemorialNestedInput
 }
 
 export type MemorialUncheckedUpdateManyWithoutCreatedByUserInput = {
@@ -1383,17 +1383,17 @@ export type MemorialUncheckedUpdateManyWithoutCreatedByUserInput = {
  */
 
 export type MemorialCountOutputType = {
-  images: number
   timeline: number
   memories: number
   flames: number
+  corrections: number
 }
 
 export type MemorialCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  images?: boolean | MemorialCountOutputTypeCountImagesArgs
   timeline?: boolean | MemorialCountOutputTypeCountTimelineArgs
   memories?: boolean | MemorialCountOutputTypeCountMemoriesArgs
   flames?: boolean | MemorialCountOutputTypeCountFlamesArgs
+  corrections?: boolean | MemorialCountOutputTypeCountCorrectionsArgs
 }
 
 /**
@@ -1404,13 +1404,6 @@ export type MemorialCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Ext
    * Select specific fields to fetch from the MemorialCountOutputType
    */
   select?: Prisma.MemorialCountOutputTypeSelect<ExtArgs> | null
-}
-
-/**
- * MemorialCountOutputType without action
- */
-export type MemorialCountOutputTypeCountImagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.ImageWhereInput
 }
 
 /**
@@ -1434,6 +1427,13 @@ export type MemorialCountOutputTypeCountFlamesArgs<ExtArgs extends runtime.Types
   where?: Prisma.FlamesWhereInput
 }
 
+/**
+ * MemorialCountOutputType without action
+ */
+export type MemorialCountOutputTypeCountCorrectionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CorrectionWhereInput
+}
+
 
 export type MemorialSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1450,12 +1450,12 @@ export type MemorialSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   createdAt?: boolean
   updatedAt?: boolean
   createdBy?: boolean
-  images?: boolean | Prisma.Memorial$imagesArgs<ExtArgs>
   timeline?: boolean | Prisma.Memorial$timelineArgs<ExtArgs>
   memories?: boolean | Prisma.Memorial$memoriesArgs<ExtArgs>
+  flames?: boolean | Prisma.Memorial$flamesArgs<ExtArgs>
+  corrections?: boolean | Prisma.Memorial$correctionsArgs<ExtArgs>
   country?: boolean | Prisma.CountryDefaultArgs<ExtArgs>
   createdByUser?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  flames?: boolean | Prisma.Memorial$flamesArgs<ExtArgs>
   _count?: boolean | Prisma.MemorialCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["memorial"]>
 
@@ -1516,12 +1516,12 @@ export type MemorialSelectScalar = {
 
 export type MemorialOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "slug" | "name" | "category" | "countryId" | "occupation" | "remembrance" | "potraitUrl" | "dateOfBirth" | "dateOfDeath" | "about" | "createdAt" | "updatedAt" | "createdBy", ExtArgs["result"]["memorial"]>
 export type MemorialInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  images?: boolean | Prisma.Memorial$imagesArgs<ExtArgs>
   timeline?: boolean | Prisma.Memorial$timelineArgs<ExtArgs>
   memories?: boolean | Prisma.Memorial$memoriesArgs<ExtArgs>
+  flames?: boolean | Prisma.Memorial$flamesArgs<ExtArgs>
+  corrections?: boolean | Prisma.Memorial$correctionsArgs<ExtArgs>
   country?: boolean | Prisma.CountryDefaultArgs<ExtArgs>
   createdByUser?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  flames?: boolean | Prisma.Memorial$flamesArgs<ExtArgs>
   _count?: boolean | Prisma.MemorialCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type MemorialIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1536,12 +1536,12 @@ export type MemorialIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Ext
 export type $MemorialPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Memorial"
   objects: {
-    images: Prisma.$ImagePayload<ExtArgs>[]
     timeline: Prisma.$TimelineEntryPayload<ExtArgs>[]
     memories: Prisma.$MemoryPayload<ExtArgs>[]
+    flames: Prisma.$FlamesPayload<ExtArgs>[]
+    corrections: Prisma.$CorrectionPayload<ExtArgs>[]
     country: Prisma.$CountryPayload<ExtArgs>
     createdByUser: Prisma.$UserPayload<ExtArgs>
-    flames: Prisma.$FlamesPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1952,12 +1952,12 @@ readonly fields: MemorialFieldRefs;
  */
 export interface Prisma__MemorialClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  images<T extends Prisma.Memorial$imagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Memorial$imagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ImagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   timeline<T extends Prisma.Memorial$timelineArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Memorial$timelineArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TimelineEntryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   memories<T extends Prisma.Memorial$memoriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Memorial$memoriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MemoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  flames<T extends Prisma.Memorial$flamesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Memorial$flamesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FlamesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  corrections<T extends Prisma.Memorial$correctionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Memorial$correctionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CorrectionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   country<T extends Prisma.CountryDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CountryDefaultArgs<ExtArgs>>): Prisma.Prisma__CountryClient<runtime.Types.Result.GetResult<Prisma.$CountryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   createdByUser<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  flames<T extends Prisma.Memorial$flamesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Memorial$flamesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FlamesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2402,30 +2402,6 @@ export type MemorialDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Inte
 }
 
 /**
- * Memorial.images
- */
-export type Memorial$imagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the Image
-   */
-  select?: Prisma.ImageSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the Image
-   */
-  omit?: Prisma.ImageOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.ImageInclude<ExtArgs> | null
-  where?: Prisma.ImageWhereInput
-  orderBy?: Prisma.ImageOrderByWithRelationInput | Prisma.ImageOrderByWithRelationInput[]
-  cursor?: Prisma.ImageWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.ImageScalarFieldEnum | Prisma.ImageScalarFieldEnum[]
-}
-
-/**
  * Memorial.timeline
  */
 export type Memorial$timelineArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2495,6 +2471,30 @@ export type Memorial$flamesArgs<ExtArgs extends runtime.Types.Extensions.Interna
   take?: number
   skip?: number
   distinct?: Prisma.FlamesScalarFieldEnum | Prisma.FlamesScalarFieldEnum[]
+}
+
+/**
+ * Memorial.corrections
+ */
+export type Memorial$correctionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Correction
+   */
+  select?: Prisma.CorrectionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Correction
+   */
+  omit?: Prisma.CorrectionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CorrectionInclude<ExtArgs> | null
+  where?: Prisma.CorrectionWhereInput
+  orderBy?: Prisma.CorrectionOrderByWithRelationInput | Prisma.CorrectionOrderByWithRelationInput[]
+  cursor?: Prisma.CorrectionWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CorrectionScalarFieldEnum | Prisma.CorrectionScalarFieldEnum[]
 }
 
 /**

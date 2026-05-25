@@ -15,13 +15,14 @@ model Memorial {
     updatedAt       DateTime @updatedAt
     createdBy       String
 
-    images          Image[]
     timeline        TimelineEntry[]
     memories        Memory[]
+    flames           Flames[]
+    corrections     Correction[]
 
     country         Country @relation(fields: [countryId], references: [id])
     createdByUser   User @relation(fields: [createdBy], references: [id])
-    flames           Flames[]
+
 }
 
 model Flames {
@@ -35,16 +36,6 @@ model Flames {
     memorial     Memorial? @relation(fields: [memorialId], references: [id])
 }
 
-model Image {
-    id          String    @id @default(dbgenerated("gen_random_uuid()"))
-    url         String    @unique
-    description String
-    memorialId  String
-
-    createdAt   DateTime @default(now())
-    updatedAt   DateTime @updatedAt
-    memorial    Memorial @relation(fields: [memorialId], references: [id])
-}
 
 model TimelineEntry {
     id          String    @id @default(dbgenerated("gen_random_uuid()"))
@@ -65,12 +56,25 @@ model Memory {
     name        String
     message     String
     memorialId  String
+    imageUrl    String?
     status      MemoryStatus @default(PENDING)
 
     createdAt   DateTime @default(now())
     updatedAt   DateTime @updatedAt
     
+    memorial    Memorial @relation(fields: [memorialId], references: [id])
+}
 
+model Correction {
+    id          String    @id @default(dbgenerated("gen_random_uuid()"))
+    field        String
+    note        String
+    email       String
+    memorialId  String
+    status      CorrectionStatus @default(PENDING)
 
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+    
     memorial    Memorial @relation(fields: [memorialId], references: [id])
 }

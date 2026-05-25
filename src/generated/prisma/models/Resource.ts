@@ -28,6 +28,7 @@ export type ResourceMinAggregateOutputType = {
   id: string | null
   name: string | null
   phoneNumber: string | null
+  email: string | null
   region: string | null
   url: string | null
   createdAt: Date | null
@@ -38,6 +39,7 @@ export type ResourceMaxAggregateOutputType = {
   id: string | null
   name: string | null
   phoneNumber: string | null
+  email: string | null
   region: string | null
   url: string | null
   createdAt: Date | null
@@ -48,6 +50,7 @@ export type ResourceCountAggregateOutputType = {
   id: number
   name: number
   phoneNumber: number
+  email: number
   region: number
   url: number
   createdAt: number
@@ -60,6 +63,7 @@ export type ResourceMinAggregateInputType = {
   id?: true
   name?: true
   phoneNumber?: true
+  email?: true
   region?: true
   url?: true
   createdAt?: true
@@ -70,6 +74,7 @@ export type ResourceMaxAggregateInputType = {
   id?: true
   name?: true
   phoneNumber?: true
+  email?: true
   region?: true
   url?: true
   createdAt?: true
@@ -80,6 +85,7 @@ export type ResourceCountAggregateInputType = {
   id?: true
   name?: true
   phoneNumber?: true
+  email?: true
   region?: true
   url?: true
   createdAt?: true
@@ -163,6 +169,7 @@ export type ResourceGroupByOutputType = {
   id: string
   name: string
   phoneNumber: string
+  email: string
   region: string
   url: string
   createdAt: Date
@@ -194,6 +201,7 @@ export type ResourceWhereInput = {
   id?: Prisma.StringFilter<"Resource"> | string
   name?: Prisma.StringFilter<"Resource"> | string
   phoneNumber?: Prisma.StringFilter<"Resource"> | string
+  email?: Prisma.StringFilter<"Resource"> | string
   region?: Prisma.StringFilter<"Resource"> | string
   url?: Prisma.StringFilter<"Resource"> | string
   createdAt?: Prisma.DateTimeFilter<"Resource"> | Date | string
@@ -204,6 +212,7 @@ export type ResourceOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   phoneNumber?: Prisma.SortOrder
+  email?: Prisma.SortOrder
   region?: Prisma.SortOrder
   url?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -217,6 +226,7 @@ export type ResourceWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.ResourceWhereInput | Prisma.ResourceWhereInput[]
   name?: Prisma.StringFilter<"Resource"> | string
   phoneNumber?: Prisma.StringFilter<"Resource"> | string
+  email?: Prisma.StringFilter<"Resource"> | string
   region?: Prisma.StringFilter<"Resource"> | string
   url?: Prisma.StringFilter<"Resource"> | string
   createdAt?: Prisma.DateTimeFilter<"Resource"> | Date | string
@@ -227,6 +237,7 @@ export type ResourceOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   phoneNumber?: Prisma.SortOrder
+  email?: Prisma.SortOrder
   region?: Prisma.SortOrder
   url?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -243,6 +254,7 @@ export type ResourceScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"Resource"> | string
   name?: Prisma.StringWithAggregatesFilter<"Resource"> | string
   phoneNumber?: Prisma.StringWithAggregatesFilter<"Resource"> | string
+  email?: Prisma.StringWithAggregatesFilter<"Resource"> | string
   region?: Prisma.StringWithAggregatesFilter<"Resource"> | string
   url?: Prisma.StringWithAggregatesFilter<"Resource"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Resource"> | Date | string
@@ -253,6 +265,7 @@ export type ResourceCreateInput = {
   id?: string
   name: string
   phoneNumber: string
+  email: string
   region: string
   url: string
   createdAt?: Date | string
@@ -263,6 +276,7 @@ export type ResourceUncheckedCreateInput = {
   id?: string
   name: string
   phoneNumber: string
+  email: string
   region: string
   url: string
   createdAt?: Date | string
@@ -273,6 +287,7 @@ export type ResourceUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
   region?: Prisma.StringFieldUpdateOperationsInput | string
   url?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -283,6 +298,7 @@ export type ResourceUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
   region?: Prisma.StringFieldUpdateOperationsInput | string
   url?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -293,6 +309,7 @@ export type ResourceCreateManyInput = {
   id?: string
   name: string
   phoneNumber: string
+  email: string
   region: string
   url: string
   createdAt?: Date | string
@@ -303,6 +320,7 @@ export type ResourceUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
   region?: Prisma.StringFieldUpdateOperationsInput | string
   url?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -313,6 +331,7 @@ export type ResourceUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
   region?: Prisma.StringFieldUpdateOperationsInput | string
   url?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -323,6 +342,7 @@ export type ResourceCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   phoneNumber?: Prisma.SortOrder
+  email?: Prisma.SortOrder
   region?: Prisma.SortOrder
   url?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -333,6 +353,7 @@ export type ResourceMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   phoneNumber?: Prisma.SortOrder
+  email?: Prisma.SortOrder
   region?: Prisma.SortOrder
   url?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -343,6 +364,7 @@ export type ResourceMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   phoneNumber?: Prisma.SortOrder
+  email?: Prisma.SortOrder
   region?: Prisma.SortOrder
   url?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -355,6 +377,7 @@ export type ResourceSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   id?: boolean
   name?: boolean
   phoneNumber?: boolean
+  email?: boolean
   region?: boolean
   url?: boolean
   createdAt?: boolean
@@ -365,6 +388,7 @@ export type ResourceSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
   id?: boolean
   name?: boolean
   phoneNumber?: boolean
+  email?: boolean
   region?: boolean
   url?: boolean
   createdAt?: boolean
@@ -375,6 +399,7 @@ export type ResourceSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
   id?: boolean
   name?: boolean
   phoneNumber?: boolean
+  email?: boolean
   region?: boolean
   url?: boolean
   createdAt?: boolean
@@ -385,13 +410,14 @@ export type ResourceSelectScalar = {
   id?: boolean
   name?: boolean
   phoneNumber?: boolean
+  email?: boolean
   region?: boolean
   url?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type ResourceOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "phoneNumber" | "region" | "url" | "createdAt" | "updatedAt", ExtArgs["result"]["resource"]>
+export type ResourceOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "phoneNumber" | "email" | "region" | "url" | "createdAt" | "updatedAt", ExtArgs["result"]["resource"]>
 
 export type $ResourcePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Resource"
@@ -400,6 +426,7 @@ export type $ResourcePayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     id: string
     name: string
     phoneNumber: string
+    email: string
     region: string
     url: string
     createdAt: Date
@@ -830,6 +857,7 @@ export interface ResourceFieldRefs {
   readonly id: Prisma.FieldRef<"Resource", 'String'>
   readonly name: Prisma.FieldRef<"Resource", 'String'>
   readonly phoneNumber: Prisma.FieldRef<"Resource", 'String'>
+  readonly email: Prisma.FieldRef<"Resource", 'String'>
   readonly region: Prisma.FieldRef<"Resource", 'String'>
   readonly url: Prisma.FieldRef<"Resource", 'String'>
   readonly createdAt: Prisma.FieldRef<"Resource", 'DateTime'>

@@ -11,6 +11,7 @@ import { MemorialModule } from './modules/memorial/memorial.module';
 import { StorageModule } from './modules/storage/storage.module';
 import { AdminModule } from './modules/admin/admin.module';
 import { HealthModule } from './modules/health/health.module';
+import { ResourceModule } from './modules/resource/resource.module';
 
 @Module({
   imports: [
@@ -33,6 +34,7 @@ import { HealthModule } from './modules/health/health.module';
     StorageModule,
     AdminModule,
     HealthModule,
+    ResourceModule,
   ],
   controllers: [AppController],
   providers: [AppService],

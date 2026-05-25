@@ -392,9 +392,9 @@ export const ModelName = {
   Otp: 'Otp',
   Memorial: 'Memorial',
   Flames: 'Flames',
-  Image: 'Image',
   TimelineEntry: 'TimelineEntry',
   Memory: 'Memory',
+  Correction: 'Correction',
   Resource: 'Resource',
   User: 'User',
   Organization: 'Organization'
@@ -413,7 +413,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "country" | "auditLog" | "session" | "userCredential" | "passwordHistory" | "otp" | "memorial" | "flames" | "image" | "timelineEntry" | "memory" | "resource" | "user" | "organization"
+    modelProps: "country" | "auditLog" | "session" | "userCredential" | "passwordHistory" | "otp" | "memorial" | "flames" | "timelineEntry" | "memory" | "correction" | "resource" | "user" | "organization"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1009,80 +1009,6 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
-    Image: {
-      payload: Prisma.$ImagePayload<ExtArgs>
-      fields: Prisma.ImageFieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.ImageFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ImagePayload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.ImageFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ImagePayload>
-        }
-        findFirst: {
-          args: Prisma.ImageFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ImagePayload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.ImageFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ImagePayload>
-        }
-        findMany: {
-          args: Prisma.ImageFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ImagePayload>[]
-        }
-        create: {
-          args: Prisma.ImageCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ImagePayload>
-        }
-        createMany: {
-          args: Prisma.ImageCreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        createManyAndReturn: {
-          args: Prisma.ImageCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ImagePayload>[]
-        }
-        delete: {
-          args: Prisma.ImageDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ImagePayload>
-        }
-        update: {
-          args: Prisma.ImageUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ImagePayload>
-        }
-        deleteMany: {
-          args: Prisma.ImageDeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.ImageUpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateManyAndReturn: {
-          args: Prisma.ImageUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ImagePayload>[]
-        }
-        upsert: {
-          args: Prisma.ImageUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ImagePayload>
-        }
-        aggregate: {
-          args: Prisma.ImageAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateImage>
-        }
-        groupBy: {
-          args: Prisma.ImageGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.ImageGroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.ImageCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.ImageCountAggregateOutputType> | number
-        }
-      }
-    }
     TimelineEntry: {
       payload: Prisma.$TimelineEntryPayload<ExtArgs>
       fields: Prisma.TimelineEntryFieldRefs
@@ -1228,6 +1154,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.MemoryCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.MemoryCountAggregateOutputType> | number
+        }
+      }
+    }
+    Correction: {
+      payload: Prisma.$CorrectionPayload<ExtArgs>
+      fields: Prisma.CorrectionFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.CorrectionFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CorrectionPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.CorrectionFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CorrectionPayload>
+        }
+        findFirst: {
+          args: Prisma.CorrectionFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CorrectionPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.CorrectionFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CorrectionPayload>
+        }
+        findMany: {
+          args: Prisma.CorrectionFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CorrectionPayload>[]
+        }
+        create: {
+          args: Prisma.CorrectionCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CorrectionPayload>
+        }
+        createMany: {
+          args: Prisma.CorrectionCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.CorrectionCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CorrectionPayload>[]
+        }
+        delete: {
+          args: Prisma.CorrectionDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CorrectionPayload>
+        }
+        update: {
+          args: Prisma.CorrectionUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CorrectionPayload>
+        }
+        deleteMany: {
+          args: Prisma.CorrectionDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.CorrectionUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.CorrectionUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CorrectionPayload>[]
+        }
+        upsert: {
+          args: Prisma.CorrectionUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CorrectionPayload>
+        }
+        aggregate: {
+          args: Prisma.CorrectionAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCorrection>
+        }
+        groupBy: {
+          args: Prisma.CorrectionGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CorrectionGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.CorrectionCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CorrectionCountAggregateOutputType> | number
         }
       }
     }
@@ -1591,18 +1591,6 @@ export const FlamesScalarFieldEnum = {
 export type FlamesScalarFieldEnum = (typeof FlamesScalarFieldEnum)[keyof typeof FlamesScalarFieldEnum]
 
 
-export const ImageScalarFieldEnum = {
-  id: 'id',
-  url: 'url',
-  description: 'description',
-  memorialId: 'memorialId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type ImageScalarFieldEnum = (typeof ImageScalarFieldEnum)[keyof typeof ImageScalarFieldEnum]
-
-
 export const TimelineEntryScalarFieldEnum = {
   id: 'id',
   title: 'title',
@@ -1622,6 +1610,7 @@ export const MemoryScalarFieldEnum = {
   name: 'name',
   message: 'message',
   memorialId: 'memorialId',
+  imageUrl: 'imageUrl',
   status: 'status',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -1630,10 +1619,25 @@ export const MemoryScalarFieldEnum = {
 export type MemoryScalarFieldEnum = (typeof MemoryScalarFieldEnum)[keyof typeof MemoryScalarFieldEnum]
 
 
+export const CorrectionScalarFieldEnum = {
+  id: 'id',
+  field: 'field',
+  note: 'note',
+  email: 'email',
+  memorialId: 'memorialId',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CorrectionScalarFieldEnum = (typeof CorrectionScalarFieldEnum)[keyof typeof CorrectionScalarFieldEnum]
+
+
 export const ResourceScalarFieldEnum = {
   id: 'id',
   name: 'name',
   phoneNumber: 'phoneNumber',
+  email: 'email',
   region: 'region',
   url: 'url',
   createdAt: 'createdAt',
@@ -1821,6 +1825,20 @@ export type ListEnumMemoryStatusFieldRefInput<$PrismaModel> = FieldRefInputType<
 
 
 /**
+ * Reference to a field of type 'CorrectionStatus'
+ */
+export type EnumCorrectionStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CorrectionStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'CorrectionStatus[]'
+ */
+export type ListEnumCorrectionStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CorrectionStatus[]'>
+    
+
+
+/**
  * Reference to a field of type 'UserRole'
  */
 export type EnumUserRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'UserRole'>
@@ -1965,9 +1983,9 @@ export type GlobalOmitConfig = {
   otp?: Prisma.OtpOmit
   memorial?: Prisma.MemorialOmit
   flames?: Prisma.FlamesOmit
-  image?: Prisma.ImageOmit
   timelineEntry?: Prisma.TimelineEntryOmit
   memory?: Prisma.MemoryOmit
+  correction?: Prisma.CorrectionOmit
   resource?: Prisma.ResourceOmit
   user?: Prisma.UserOmit
   organization?: Prisma.OrganizationOmit

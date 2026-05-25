@@ -9,4 +9,7 @@ export class CreateMemoryDto {
 
   @IsString()
   memorialId: string = '';
+
+  @IsString()
+  imageUrl?: string;
 }

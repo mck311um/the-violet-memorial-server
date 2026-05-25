@@ -59,9 +59,9 @@ export const ModelName = {
   Otp: 'Otp',
   Memorial: 'Memorial',
   Flames: 'Flames',
-  Image: 'Image',
   TimelineEntry: 'TimelineEntry',
   Memory: 'Memory',
+  Correction: 'Correction',
   Resource: 'Resource',
   User: 'User',
   Organization: 'Organization'
@@ -182,18 +182,6 @@ export const FlamesScalarFieldEnum = {
 export type FlamesScalarFieldEnum = (typeof FlamesScalarFieldEnum)[keyof typeof FlamesScalarFieldEnum]
 
 
-export const ImageScalarFieldEnum = {
-  id: 'id',
-  url: 'url',
-  description: 'description',
-  memorialId: 'memorialId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type ImageScalarFieldEnum = (typeof ImageScalarFieldEnum)[keyof typeof ImageScalarFieldEnum]
-
-
 export const TimelineEntryScalarFieldEnum = {
   id: 'id',
   title: 'title',
@@ -213,6 +201,7 @@ export const MemoryScalarFieldEnum = {
   name: 'name',
   message: 'message',
   memorialId: 'memorialId',
+  imageUrl: 'imageUrl',
   status: 'status',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -221,10 +210,25 @@ export const MemoryScalarFieldEnum = {
 export type MemoryScalarFieldEnum = (typeof MemoryScalarFieldEnum)[keyof typeof MemoryScalarFieldEnum]
 
 
+export const CorrectionScalarFieldEnum = {
+  id: 'id',
+  field: 'field',
+  note: 'note',
+  email: 'email',
+  memorialId: 'memorialId',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CorrectionScalarFieldEnum = (typeof CorrectionScalarFieldEnum)[keyof typeof CorrectionScalarFieldEnum]
+
+
 export const ResourceScalarFieldEnum = {
   id: 'id',
   name: 'name',
   phoneNumber: 'phoneNumber',
+  email: 'email',
   region: 'region',
   url: 'url',
   createdAt: 'createdAt',

@@ -252,6 +252,23 @@ export type EnumMemoryStatusWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedEnumMemoryStatusFilter<$PrismaModel>
 }
 
+export type EnumCorrectionStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.CorrectionStatus | Prisma.EnumCorrectionStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.CorrectionStatus[] | Prisma.ListEnumCorrectionStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CorrectionStatus[] | Prisma.ListEnumCorrectionStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCorrectionStatusFilter<$PrismaModel> | $Enums.CorrectionStatus
+}
+
+export type EnumCorrectionStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.CorrectionStatus | Prisma.EnumCorrectionStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.CorrectionStatus[] | Prisma.ListEnumCorrectionStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CorrectionStatus[] | Prisma.ListEnumCorrectionStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCorrectionStatusWithAggregatesFilter<$PrismaModel> | $Enums.CorrectionStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumCorrectionStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumCorrectionStatusFilter<$PrismaModel>
+}
+
 export type EnumUserRoleFilter<$PrismaModel = never> = {
   equals?: $Enums.UserRole | Prisma.EnumUserRoleFieldRefInput<$PrismaModel>
   in?: $Enums.UserRole[] | Prisma.ListEnumUserRoleFieldRefInput<$PrismaModel>
@@ -516,6 +533,23 @@ export type NestedEnumMemoryStatusWithAggregatesFilter<$PrismaModel = never> = {
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumMemoryStatusFilter<$PrismaModel>
   _max?: Prisma.NestedEnumMemoryStatusFilter<$PrismaModel>
+}
+
+export type NestedEnumCorrectionStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.CorrectionStatus | Prisma.EnumCorrectionStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.CorrectionStatus[] | Prisma.ListEnumCorrectionStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CorrectionStatus[] | Prisma.ListEnumCorrectionStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCorrectionStatusFilter<$PrismaModel> | $Enums.CorrectionStatus
+}
+
+export type NestedEnumCorrectionStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.CorrectionStatus | Prisma.EnumCorrectionStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.CorrectionStatus[] | Prisma.ListEnumCorrectionStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CorrectionStatus[] | Prisma.ListEnumCorrectionStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCorrectionStatusWithAggregatesFilter<$PrismaModel> | $Enums.CorrectionStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumCorrectionStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumCorrectionStatusFilter<$PrismaModel>
 }
 
 export type NestedEnumUserRoleFilter<$PrismaModel = never> = {

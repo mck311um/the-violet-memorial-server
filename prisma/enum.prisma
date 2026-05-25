@@ -27,5 +27,12 @@ enum UserRole {
 enum MemoryStatus {
   PENDING
   APPROVED
+  REPORTED
+  REJECTED
+}
+
+enum CorrectionStatus {
+  PENDING
+  APPROVED
   REJECTED
 }

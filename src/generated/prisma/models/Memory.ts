@@ -30,6 +30,7 @@ export type MemoryMinAggregateOutputType = {
   name: string | null
   message: string | null
   memorialId: string | null
+  imageUrl: string | null
   status: $Enums.MemoryStatus | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -41,6 +42,7 @@ export type MemoryMaxAggregateOutputType = {
   name: string | null
   message: string | null
   memorialId: string | null
+  imageUrl: string | null
   status: $Enums.MemoryStatus | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -52,6 +54,7 @@ export type MemoryCountAggregateOutputType = {
   name: number
   message: number
   memorialId: number
+  imageUrl: number
   status: number
   createdAt: number
   updatedAt: number
@@ -65,6 +68,7 @@ export type MemoryMinAggregateInputType = {
   name?: true
   message?: true
   memorialId?: true
+  imageUrl?: true
   status?: true
   createdAt?: true
   updatedAt?: true
@@ -76,6 +80,7 @@ export type MemoryMaxAggregateInputType = {
   name?: true
   message?: true
   memorialId?: true
+  imageUrl?: true
   status?: true
   createdAt?: true
   updatedAt?: true
@@ -87,6 +92,7 @@ export type MemoryCountAggregateInputType = {
   name?: true
   message?: true
   memorialId?: true
+  imageUrl?: true
   status?: true
   createdAt?: true
   updatedAt?: true
@@ -171,6 +177,7 @@ export type MemoryGroupByOutputType = {
   name: string
   message: string
   memorialId: string
+  imageUrl: string | null
   status: $Enums.MemoryStatus
   createdAt: Date
   updatedAt: Date
@@ -203,6 +210,7 @@ export type MemoryWhereInput = {
   name?: Prisma.StringFilter<"Memory"> | string
   message?: Prisma.StringFilter<"Memory"> | string
   memorialId?: Prisma.StringFilter<"Memory"> | string
+  imageUrl?: Prisma.StringNullableFilter<"Memory"> | string | null
   status?: Prisma.EnumMemoryStatusFilter<"Memory"> | $Enums.MemoryStatus
   createdAt?: Prisma.DateTimeFilter<"Memory"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Memory"> | Date | string
@@ -215,6 +223,7 @@ export type MemoryOrderByWithRelationInput = {
   name?: Prisma.SortOrder
   message?: Prisma.SortOrder
   memorialId?: Prisma.SortOrder
+  imageUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -230,6 +239,7 @@ export type MemoryWhereUniqueInput = Prisma.AtLeast<{
   name?: Prisma.StringFilter<"Memory"> | string
   message?: Prisma.StringFilter<"Memory"> | string
   memorialId?: Prisma.StringFilter<"Memory"> | string
+  imageUrl?: Prisma.StringNullableFilter<"Memory"> | string | null
   status?: Prisma.EnumMemoryStatusFilter<"Memory"> | $Enums.MemoryStatus
   createdAt?: Prisma.DateTimeFilter<"Memory"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Memory"> | Date | string
@@ -242,6 +252,7 @@ export type MemoryOrderByWithAggregationInput = {
   name?: Prisma.SortOrder
   message?: Prisma.SortOrder
   memorialId?: Prisma.SortOrder
+  imageUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -259,6 +270,7 @@ export type MemoryScalarWhereWithAggregatesInput = {
   name?: Prisma.StringWithAggregatesFilter<"Memory"> | string
   message?: Prisma.StringWithAggregatesFilter<"Memory"> | string
   memorialId?: Prisma.StringWithAggregatesFilter<"Memory"> | string
+  imageUrl?: Prisma.StringNullableWithAggregatesFilter<"Memory"> | string | null
   status?: Prisma.EnumMemoryStatusWithAggregatesFilter<"Memory"> | $Enums.MemoryStatus
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Memory"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Memory"> | Date | string
@@ -269,6 +281,7 @@ export type MemoryCreateInput = {
   initials: string
   name: string
   message: string
+  imageUrl?: string | null
   status?: $Enums.MemoryStatus
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -281,6 +294,7 @@ export type MemoryUncheckedCreateInput = {
   name: string
   message: string
   memorialId: string
+  imageUrl?: string | null
   status?: $Enums.MemoryStatus
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -291,6 +305,7 @@ export type MemoryUpdateInput = {
   initials?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   message?: Prisma.StringFieldUpdateOperationsInput | string
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumMemoryStatusFieldUpdateOperationsInput | $Enums.MemoryStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -303,6 +318,7 @@ export type MemoryUncheckedUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   message?: Prisma.StringFieldUpdateOperationsInput | string
   memorialId?: Prisma.StringFieldUpdateOperationsInput | string
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumMemoryStatusFieldUpdateOperationsInput | $Enums.MemoryStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -314,6 +330,7 @@ export type MemoryCreateManyInput = {
   name: string
   message: string
   memorialId: string
+  imageUrl?: string | null
   status?: $Enums.MemoryStatus
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -324,6 +341,7 @@ export type MemoryUpdateManyMutationInput = {
   initials?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   message?: Prisma.StringFieldUpdateOperationsInput | string
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumMemoryStatusFieldUpdateOperationsInput | $Enums.MemoryStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -335,6 +353,7 @@ export type MemoryUncheckedUpdateManyInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   message?: Prisma.StringFieldUpdateOperationsInput | string
   memorialId?: Prisma.StringFieldUpdateOperationsInput | string
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumMemoryStatusFieldUpdateOperationsInput | $Enums.MemoryStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -356,6 +375,7 @@ export type MemoryCountOrderByAggregateInput = {
   name?: Prisma.SortOrder
   message?: Prisma.SortOrder
   memorialId?: Prisma.SortOrder
+  imageUrl?: Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -367,6 +387,7 @@ export type MemoryMaxOrderByAggregateInput = {
   name?: Prisma.SortOrder
   message?: Prisma.SortOrder
   memorialId?: Prisma.SortOrder
+  imageUrl?: Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -378,6 +399,7 @@ export type MemoryMinOrderByAggregateInput = {
   name?: Prisma.SortOrder
   message?: Prisma.SortOrder
   memorialId?: Prisma.SortOrder
+  imageUrl?: Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -434,6 +456,7 @@ export type MemoryCreateWithoutMemorialInput = {
   initials: string
   name: string
   message: string
+  imageUrl?: string | null
   status?: $Enums.MemoryStatus
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -444,6 +467,7 @@ export type MemoryUncheckedCreateWithoutMemorialInput = {
   initials: string
   name: string
   message: string
+  imageUrl?: string | null
   status?: $Enums.MemoryStatus
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -484,6 +508,7 @@ export type MemoryScalarWhereInput = {
   name?: Prisma.StringFilter<"Memory"> | string
   message?: Prisma.StringFilter<"Memory"> | string
   memorialId?: Prisma.StringFilter<"Memory"> | string
+  imageUrl?: Prisma.StringNullableFilter<"Memory"> | string | null
   status?: Prisma.EnumMemoryStatusFilter<"Memory"> | $Enums.MemoryStatus
   createdAt?: Prisma.DateTimeFilter<"Memory"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Memory"> | Date | string
@@ -494,6 +519,7 @@ export type MemoryCreateManyMemorialInput = {
   initials: string
   name: string
   message: string
+  imageUrl?: string | null
   status?: $Enums.MemoryStatus
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -504,6 +530,7 @@ export type MemoryUpdateWithoutMemorialInput = {
   initials?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   message?: Prisma.StringFieldUpdateOperationsInput | string
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumMemoryStatusFieldUpdateOperationsInput | $Enums.MemoryStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -514,6 +541,7 @@ export type MemoryUncheckedUpdateWithoutMemorialInput = {
   initials?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   message?: Prisma.StringFieldUpdateOperationsInput | string
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumMemoryStatusFieldUpdateOperationsInput | $Enums.MemoryStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -524,6 +552,7 @@ export type MemoryUncheckedUpdateManyWithoutMemorialInput = {
   initials?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   message?: Prisma.StringFieldUpdateOperationsInput | string
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumMemoryStatusFieldUpdateOperationsInput | $Enums.MemoryStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -537,6 +566,7 @@ export type MemorySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   name?: boolean
   message?: boolean
   memorialId?: boolean
+  imageUrl?: boolean
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -549,6 +579,7 @@ export type MemorySelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extens
   name?: boolean
   message?: boolean
   memorialId?: boolean
+  imageUrl?: boolean
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -561,6 +592,7 @@ export type MemorySelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
   name?: boolean
   message?: boolean
   memorialId?: boolean
+  imageUrl?: boolean
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -573,12 +605,13 @@ export type MemorySelectScalar = {
   name?: boolean
   message?: boolean
   memorialId?: boolean
+  imageUrl?: boolean
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type MemoryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "initials" | "name" | "message" | "memorialId" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["memory"]>
+export type MemoryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "initials" | "name" | "message" | "memorialId" | "imageUrl" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["memory"]>
 export type MemoryInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   memorial?: boolean | Prisma.MemorialDefaultArgs<ExtArgs>
 }
@@ -600,6 +633,7 @@ export type $MemoryPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     name: string
     message: string
     memorialId: string
+    imageUrl: string | null
     status: $Enums.MemoryStatus
     createdAt: Date
     updatedAt: Date
@@ -1032,6 +1066,7 @@ export interface MemoryFieldRefs {
   readonly name: Prisma.FieldRef<"Memory", 'String'>
   readonly message: Prisma.FieldRef<"Memory", 'String'>
   readonly memorialId: Prisma.FieldRef<"Memory", 'String'>
+  readonly imageUrl: Prisma.FieldRef<"Memory", 'String'>
   readonly status: Prisma.FieldRef<"Memory", 'MemoryStatus'>
   readonly createdAt: Prisma.FieldRef<"Memory", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Memory", 'DateTime'>

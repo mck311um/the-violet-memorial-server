@@ -80,11 +80,6 @@ export type Memorial = Prisma.MemorialModel
  */
 export type Flames = Prisma.FlamesModel
 /**
- * Model Image
- * 
- */
-export type Image = Prisma.ImageModel
-/**
  * Model TimelineEntry
  * 
  */
@@ -94,6 +89,11 @@ export type TimelineEntry = Prisma.TimelineEntryModel
  * 
  */
 export type Memory = Prisma.MemoryModel
+/**
+ * Model Correction
+ * 
+ */
+export type Correction = Prisma.CorrectionModel
 /**
  * Model Resource
  * 

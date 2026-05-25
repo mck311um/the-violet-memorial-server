@@ -28,6 +28,7 @@ export class MemoryService {
           initials: await this.getInitials(data.name),
           message: data.message,
           memorialId: data.memorialId,
+          imageUrl: data.imageUrl,
         },
       });
 

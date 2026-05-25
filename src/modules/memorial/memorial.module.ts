@@ -3,9 +3,15 @@ import { MemorialService } from './memorial.service';
 import { MemorialController } from './memorial.controller';
 import { TimelineService } from './service/timeline.service';
 import { MemoryService } from './service/memory.service';
+import { CorrectionService } from './service/correction.service';
 
 @Module({
   controllers: [MemorialController],
-  providers: [MemorialService, TimelineService, MemoryService],
+  providers: [
+    MemorialService,
+    TimelineService,
+    MemoryService,
+    CorrectionService,
+  ],
 })
 export class MemorialModule {}
